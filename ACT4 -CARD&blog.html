@@ -3,366 +3,87 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HAPPY LANG CARD & BLOGS- Single Screen Navigation</title>
+  <title>HAPPY LANG CARD & BLOGS</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; background: #cbf1ff; min-height: 100vh; display: flex; flex-direction: column; }
+    
+    .site-header { background: #4b4919; color: #fff; text-align: center; padding: 20px; }
+    .site-header p { color: #cbd5e0; font-size: 0.95rem; }
 
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #cbf1ff;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+    /* FLEXBOX #1: EVENLY SPACED NAVBAR */
+    .navbar { background: #c8bc20; padding: 10px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 5px #0001; }
+    .nav-links { display: flex; justify-content: space-evenly; align-items: center; list-style: none; flex-wrap: wrap; }
+    .nav-links a { color: #fff; text-decoration: none; font-weight: bold; padding: 8px 12px; border-radius: 4px; }
+    .nav-links a:hover { background: #fff; color: #1f72ef; }
 
-    /* 0. SITE HEADER */
-    .site-header {
-      background-color: #4b4919; 
-      color: #ffffff;
-      text-align: center;
-      padding: 20px;
-    }
+    /* NAVIGATION ROUTING & TOP SPACING */
+    .page-section { display: none; padding: 40px 20px 20px; flex: 1; }
+    .page-section:target { display: block; }
+    body:has(.page-section:target) #home { display: none; }
+    body:not(:has(.page-section:target)) #home, #home:target { display: block !important; }
 
-    .site-header h1 {
-      font-size: 2.2rem;
-      margin-bottom: 5px;
-    }
+    /* FLEXBOX #2: CENTERED CARDS LAYOUT */
+    .card-container { display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; margin: 20px 0 30px; }
+    .card { background: #75daff; padding: 20px; width: 250px; border-radius: 8px; box-shadow: 0 4px 8px #0002; text-align: center; }
 
-    .site-header p {
-      font-size: 1rem;
-      color: #cbd5e0;
-    }
+    .hero-banner { position: relative; max-width: 900px; margin: 0 auto; border-radius: 12px; overflow: hidden; }
+    .hero-banner img { width: 100%; height: 300px; object-fit: cover; }
+    .hero-overlay { position: absolute; bottom: 0; width: 100%; background: linear-gradient(transparent, #0008); color: #fff; padding: 20px; text-align: center; }
 
-    /* FLEXBOX #1: NAVBAR */
-    .navbar {
-      background-color: #c8bc20;
-      padding: 12px 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+    /* FLEXBOX #3: RESPONSIVE IMAGE GALLERY THAT WRAPS */
+    .gallery-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; max-width: 900px; margin: 10px auto; }
+    .meme-card { position: relative; width: 200px; height: 200px; border-radius: 8px; overflow: hidden; }
+    .meme-card img { width: 100%; height: 100%; object-fit: cover; }
+    .meme-text { position: absolute; left: 50%; transform: translateX(-50%); width: 90%; color: #fff; font-family: 'Impact', sans-serif; font-size: 13px; text-align: center; text-shadow: 2px 2px 0 #000, -2px -2px 0 #000; pointer-events: none; }
+    .meme-text.top { top: 8px; } .meme-text.bottom { bottom: 8px; } .meme-text.center { top: 50%; transform: translate(-50%, -50%); }
 
-    .nav-links {
-      display: flex;                  
-      justify-content: space-evenly;  
-      align-items: center;            
-      list-style: none;     
-      flex-wrap: wrap;  
-    }
+    /* FLEXBOX #4: SINGLE ELEMENT CENTERED IN VIEWPORT */
+    .hero-container { display: flex; justify-content: center; align-items: center; min-height: 45vh; }
+    .centered-box { background: #fff; padding: 30px; border-radius: 12px; text-align: center; max-width: 400px; box-shadow: 0 6px 12px #0002; }
 
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: bold;
-      padding: 8px 14px;
-      border-radius: 4px;
-      transition: background-color 0.3s;
-    }
+    /* GRID #1: TWO-COLUMN BLOG LAYOUT */
+    .blog-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; max-width: 900px; margin: 10px auto; }
+    .main-content, .sidebar { background: #fff; padding: 20px; border-radius: 8px; }
+    .sidebar ul { list-style: none; line-height: 1.8; }
 
-    .nav-links a:hover {
-      background-color: #ffffff;
-      color: #1f72ef;
-    }
+    /* GRID #2: FOUR-COLUMN PRODUCT GRID (RESPONSIVE) */
+    .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 900px; margin: 10px auto; }
+    .product-card { background: #fff; border-radius: 8px; overflow: hidden; text-align: center; }
+    .product-card img { width: 100%; height: 120px; object-fit: cover; }
+    .product-info { padding: 10px; }
 
-  
-    .page-section {
-      display: none; 
-      padding: 30px 20px;
-      flex: 1;
-    }
+    /* GRID #3 & #4: CALENDAR LAYOUT & SPANNING MULTIPLE COLUMNS */
+    .calendar-card { background: #fff; border-radius: 12px; padding: 20px; max-width: 800px; margin: 10px auto; }
+    .calendar-days, .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; text-align: center; }
+    .date { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 6px; min-height: 65px; padding: 4px; display: flex; flex-direction: column; justify-content: space-between; font-size: 0.8rem; }
+    .date.rest-day { background: #e8f5e9; border-color: #a5d6a7; }
+    .date.deadline { background: #ffebee; border-color: #ef9a9a; }
+    
+    /* GRID REQUIREMENT #4: MULTIPLE SPANS (2 & 3 COLUMNS) */
+    .date.span-2 { grid-column: span 2; background: #ffe4e8; border-color: #fca5a5; }
+    .date.span-3 { grid-column: span 3; background: #e0f2fe; border-color: #7dd3fc; }
 
+    .tag { font-size: 0.6rem; font-weight: bold; border-radius: 3px; padding: 2px; }
+    .rest-day .tag { background: #c8e6c9; color: #1b5e20; }
+    .deadline .tag { background: #ffcdd2; color: #b71c1c; }
+    .tag-bini { background: #f43f5e; color: #fff; }
+    .tag-cyber { background: #0284c7; color: #fff; }
 
-    .page-section:target {
-      display: block;
-    }
-
-   
-    body:has(.page-section:target) #home {
-      display: none;
-    }
-
-    body:not(:has(.page-section:target)) #home,
-    #home:target {
-      display: block !important;
-    }
-
-   
-    .card-container {
-      display: flex;
-      justify-content: center; 
-      align-items: center;     
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-      margin-bottom: 35px;
-    }
-
-    .card {
-      background-color: #75daff;
-      padding: 25px;
-      width: 260px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
-
-    /* LARGE WELCOMING HERO COVER IMAGE HOLDER (UNDER CARDS) */
-    .hero-banner {
-      position: relative;
-      max-width: 1000px;
-      margin: 0 auto;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-    }
-
-    .hero-banner img {
-      width: 100%;
-      height: 350px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-      color: #ffffff;
-      padding: 30px 20px 20px 20px;
-      text-align: center;
-    }
-
-    .hero-overlay h3 {
-      font-size: 1.8rem;
-      margin-bottom: 5px;
-    }
-
-    .hero-overlay p {
-      font-size: 1rem;
-      color: #e2e8f0;
-    }
-
-    .gallery-container {
-      display: flex;
-      flex-wrap: wrap;        
-      justify-content: center; 
-      gap: 15px;              
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .meme-card {
-      position: relative;     
-      width: 220px;
-      height: 220px;
-      border-radius: 8px;
-      overflow: hidden;      
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    }
-
-    .meme-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .meme-text {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-      color: white;
-      font-family: 'Impact', 'Arial Black', sans-serif;
-      font-size: 14px;
-      text-transform: uppercase;
-      text-align: center;
-      line-height: 1.2;
-      text-shadow: 
-        2px 2px 0 #000,
-       -2px 2px 0 #000,
-        2px -2px 0 #000,
-       -2px -2px 0 #000,
-        0px 2px 0 #000,
-        0px -2px 0 #000,
-       -2px 0px 0 #000,
-        2px 0px 0 #000;
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    .meme-text.top { top: 8px; }
-    .meme-text.bottom { bottom: 8px; }
-    .meme-text.center { top: 50%; transform: translate(-50%, -50%); }
-
-    .hero-container {
-      display: flex;
-      justify-content: center; 
-      align-items: center;    
-      min-height: 50vh;          
-    }
-
-    .centered-box {
-      background-color: #ffffff;
-      padding: 35px;
-      border-radius: 12px;
-      text-align: center;
-      max-width: 450px;
-      width: 100%;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    }
-
-    .centered-box h2 { color: #1e293b; margin-bottom: 8px; }
-    .centered-box p { color: #64748b; font-size: 0.95rem; }
-
-    .blog-layout {
-      display: grid;                  
-      grid-template-columns: 2fr 1fr; 
-      gap: 20px;                      
-      max-width: 1000px;
-      margin: 0 auto;              
-    }
-
-    .main-content, .sidebar {
-      background-color: #ffffff;
-      padding: 25px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-    }
-
-    .main-content h2 { color: #2d3748; margin-bottom: 12px; }
-    .main-content p { color: #4a5568; line-height: 1.6; }
-    .sidebar h3 { color: #2d3748; margin-bottom: 10px; }
-    .sidebar ul { list-style-type: none; }
-    .sidebar li { color: #718096; font-size: 0.95rem; line-height: 1.8; }
-
-    .product-grid-section {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .grid-title {
-      text-align: center;
-      color: #1a202c;
-      margin-bottom: 25px;
-      font-size: 1.8rem;
-    }
-
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr); 
-      gap: 20px;
-    }
-
-    .product-card {
-      background-color: #ffffff;
-      border-radius: 10px;
-      overflow: hidden; 
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-    }
-
-    .product-card img {
-      width: 100%;
-      height: 140px;
-      object-fit: cover; 
-      display: block;
-    }
-
-    .product-info { padding: 15px; text-align: center; }
-    .product-info h3 { color: #2d3748; font-size: 1.05rem; margin-bottom: 6px; }
-    .product-info p { color: #718096; font-size: 0.85rem; line-height: 1.4; }
-
-    .calendar-section {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .calendar-card {
-      background-color: #ffffff;
-      border-radius: 12px;
-      padding: 25px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    }
-
-    .calendar-header { text-align: center; margin-bottom: 20px; }
-    .calendar-header h2 { color: #1a202c; font-size: 1.8rem; margin-bottom: 6px; }
-    .calendar-header p { color: #4a5568; font-size: 0.95rem; font-style: italic; }
-
-    .calendar-days {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 8px;
-      text-align: center;
-      font-weight: bold;
-      color: #2d3748;
-      padding-bottom: 10px;
-      border-bottom: 2px solid #edf2f7;
-    }
-
-    .calendar-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 8px;
-      margin-top: 10px;
-    }
-
-    .date {
-      background-color: #f7fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 8px;
-      min-height: 75px;
-      padding: 6px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .date .num { font-weight: bold; color: #2d3748; font-size: 0.85rem; }
-    .date .sub-text { font-size: 0.7rem; color: #718096; }
-
-    .date.rest-day { background-color: #e8f5e9; border-color: #a5d6a7; }
-    .date.rest-day .num { color: #2e7d32; }
-    .date.rest-day .tag {
-      font-size: 0.65rem; font-weight: bold; color: #1b5e20;
-      background-color: #c8e6c9; padding: 2px 4px; border-radius: 4px; text-align: center;
-    }
-
-    .date.deadline { background-color: #ffebee; border-color: #ef9a9a; }
-    .date.deadline .tag {
-      font-size: 0.65rem; font-weight: bold; color: #b71c1c;
-      background-color: #ffcdd2; padding: 2px 4px; border-radius: 4px; text-align: center;
-    }
-
-    .calendar-legend {
-      margin-top: 15px; text-align: center; font-size: 0.85rem; color: #718096;
-      border-top: 1px solid #edf2f7; padding-top: 10px;
-    }
-
-    /* RESPONSIVENESS */
     @media (max-width: 768px) {
       .product-grid { grid-template-columns: repeat(2, 1fr); }
       .blog-layout { grid-template-columns: 1fr; }
-      .hero-banner img { height: 250px; }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- SITE HEADER -->
   <header class="site-header">
     <h1>HAPPY LANG BLOG</h1>
     <p>"Welcome to Happy Lang Blog, where happiness feels like taking a break from all your deadlines"</p>
   </header>
 
-  <!-- NAVBAR -->
   <nav class="navbar">
     <ul class="nav-links">
       <li><a href="#home">Home</a></li>
@@ -374,193 +95,118 @@
     </ul>
   </nav>
 
-  <!-- 1. HOME SECTION -->
+  <!-- 1. HOME (FLEXBOX #2) -->
   <section id="home" class="page-section">
-    <h2 style="text-align: center; color: #1a202c; margin-bottom: 10px;"> Welcome to Happy Lang Blog!</h2>
-    <p style="text-align: center; color: #4a5568;">Click any item on the menu above to explore different pages.</p>
-    
-    <!-- ORIGINAL THREE CARDS -->
+    <h2 style="text-align: center; margin-bottom: 20px;">Welcome to Happy Lang Blog!</h2>
     <div class="card-container">
-      <div class="card">
-        <h3> Take a Breath</h3>
-        <p>Inhale peace, exhale deadline stress.</p>
-      </div>
-      <div class="card">
-        <h3> Hydrate First</h3>
-        <p>Drink water before solving that bug or essay.</p>
-      </div>
-      <div class="card">
-        <h3> Good Sleep</h3>
-        <p>Rest is part of your productivity cycle.</p>
-      </div>
+      <div class="card"><h3>Take a Breath</h3><p>Inhale peace, exhale deadline stress.</p></div>
+      <div class="card"><h3>Hydrate First</h3><p>Drink water before solving that bug.</p></div>
+      <div class="card"><h3>Good Sleep</h3><p>Rest is part of your productivity cycle.</p></div>
     </div>
-
-    <!-- LARGE WELCOMING COVER IMAGE HOLDER (UNDER THE CARDS) -->
     <div class="hero-banner">
-      <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&q=80" alt="Happy Lang Welcoming Banner">
+      <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&q=80" alt="Banner">
       <div class="hero-overlay">
         <h3>✨ Welcome to Your Safe Space ✨</h3>
-        <p>Your go-to hub for relaxation, stress relief, and good vibes.</p>
+        <p>Your go-to hub for relaxation and good vibes.</p>
       </div>
     </div>
   </section>
 
-  <!-- 2. MEMES & VIBES SECTION -->
+  <!-- 2. MEMES (FLEXBOX #3) -->
   <section id="memes" class="page-section">
     <div class="gallery-container">
-      <figure class="meme-card">
-        <img src="https://i.pinimg.com/1200x/55/c2/67/55c267203b80bce71e78984398f0e0be.jpg" alt="Meme 1">
-        <figcaption class="meme-text top">ME AFTER PILIIN MAG-RELAX</figcaption>
-        <figcaption class="meme-text bottom">KESA GAWIN ANG TAMBAK NA DEADLINES</figcaption>
-      </figure>
-
-      <figure class="meme-card">
-        <img src="https://i.pinimg.com/736x/50/7a/f3/507af32ac6a4cba547c91fed07369c9f.jpg" alt="Meme 2">
-        <figcaption class="meme-text top">MY FACE WHEN I FINALLY UNDERSTAND</figcaption>
-        <figcaption class="meme-text bottom">THE LESSON I THOUGHT SO HARD</figcaption>
-      </figure>
-
-      <figure class="meme-card">
-        <img src="https://i.pinimg.com/736x/09/54/40/095440218afa1ada1fb3b645b3eeaeba.jpg" alt="Meme 3">
-        <figcaption class="meme-text center">MY FACE WHEN I SEE MIRROR ANYWHERE</figcaption>
-      </figure>
-
-      <figure class="meme-card">
-        <img src="https://i.pinimg.com/736x/31/3b/fe/313bfe782a27f0d88899cfa50f1b7bcd.jpg" alt="Meme 4">
-        <figcaption class="meme-text bottom">My face after finding out I chose the wrong option in Multiple choice examination</figcaption>
-      </figure>
-
-      <figure class="meme-card">
-        <img src="https://i.pinimg.com/1200x/f4/63/6c/f4636c91a2c029c7686a8d11fa527b54.jpg" alt="Meme 5">
-        <figcaption class="meme-text bottom">Me after surviving 'da day with four MAJOR subject</figcaption>
-      </figure>
+      <figure class="meme-card"><img src="https://i.pinimg.com/1200x/55/c2/67/55c267203b80bce71e78984398f0e0be.jpg" alt="Meme"><figcaption class="meme-text top">ME AFTER PILIIN MAG-RELAX</figcaption><figcaption class="meme-text bottom">KESA GAWIN ANG DEADLINES</figcaption></figure>
+      <figure class="meme-card"><img src="https://i.pinimg.com/736x/50/7a/f3/507af32ac6a4cba547c91fed07369c9f.jpg" alt="Meme"><figcaption class="meme-text top">MY FACE WHEN I FINALLY</figcaption><figcaption class="meme-text bottom">UNDERSTAND THE LESSON</figcaption></figure>
+      <figure class="meme-card"><img src="https://i.pinimg.com/736x/09/54/40/095440218afa1ada1fb3b645b3eeaeba.jpg" alt="Meme"><figcaption class="meme-text center">SEEING MIRROR ANYWHERE</figcaption></figure>
+      <figure class="meme-card"><img src="https://i.pinimg.com/736x/31/3b/fe/313bfe782a27f0d88899cfa50f1b7bcd.jpg" alt="Meme"><figcaption class="meme-text bottom">CHOSE WRONG OPTION IN EXAM</figcaption></figure>
+      <figure class="meme-card"><img src="https://i.pinimg.com/1200x/f4/63/6c/f4636c91a2c029c7686a8d11fa527b54.jpg" alt="Meme"><figcaption class="meme-text bottom">SURVIVED 4 MAJOR SUBJECTS</figcaption></figure>
     </div>
   </section>
 
-  <!-- 3. SUBSCRIBE SECTION (FLEXBOX TASK 4 - CENTERED NEWSLETTER) -->
+  <!-- 3. SUBSCRIBE (FLEXBOX #4) -->
   <section id="subscribe" class="page-section">
     <div class="hero-container">
       <div class="centered-box">
         <h2>🧠 Mind & Psychology News</h2>
         <p>Subscribe for weekly psychology insights and mental health updates!</p>
-        
         <form style="display: flex; gap: 8px; margin-top: 15px;">
-          <input type="email" placeholder="Enter your email..." style="flex: 1; padding: 10px; border-radius: 6px; border: 1px solid #ccc;" required>
-          <button type="submit" style="background: #1f72ef; color: white; border: none; padding: 10px 15px; border-radius: 6px; cursor: pointer; font-weight: bold;">Subscribe</button>
+          <input type="email" placeholder="Enter your email..." style="flex: 1; padding: 8px; border-radius: 4px; border: 1px solid #ccc;" required>
+          <button type="submit" style="background: #1f72ef; color: white; border: none; padding: 8px 12px; border-radius: 4px; font-weight: bold; cursor: pointer;">Subscribe</button>
         </form>
       </div>
     </div>
   </section>
 
-  <!-- 4. ARTICLES SECTION -->
+  <!-- 4. ARTICLES (GRID #1) -->
   <section id="articles" class="page-section">
     <div class="blog-layout">
       <main class="main-content">
-        <h2>🌸 Bakit Mahalagang Magpahinga Nang Walang Guilt?</h2>
-        <p style="margin-bottom: 15px;">
-          Sa panahon ngayon na sobrang bilis ng lahat, nakasanayan na natin na dapat palaging may ginagawa. Pero alam mo ba na ang pagpapahinga ay hindi kabawasan sa pagiging produktibo? Ito ay kailangan para magpatuloy.
-        </p>
-        <p>
-          Kahit 10 hanggang 15 minuto lang na pag-layo sa screen, pag-inom ng tubig, o simpleng pag-hinga nang malalim—malaking tulong na ito para ma-recharge ang iyong isip at katawan. Unahin din ang sarili bago ang lahat!
-        </p>
+        <h2>🌸 Bakit Mahalagang Magpahinga?</h2>
+        <p>Ang pagpapahinga ay hindi kabawasan sa pagiging produktibo. Ito ay kailangan para magpatuloy. Kahit 10-15 minuto lang na pag-layo sa screen, malaking tulong na para ma-recharge ang iyong isip at katawan.</p>
       </main>
-
       <aside class="sidebar">
-        <h3>📌 Quick Self-Care Menu</h3>
-        <ul>
-          <li>☕ Daily Coffee & Chill Ideas</li>
-          <li>🎶 Relaxing Music Playlist</li>
-          <li>🌿 5-Minute Breathing Exercise</li>
-          <li>💬 Daily Positive Affirmations</li>
-        </ul>
+        <h3>📌 Quick Self-Care</h3>
+        <ul><li>☕ Coffee & Chill</li><li>🎶 Relaxing Playlist</li><li>🌿 Breathing Exercise</li></ul>
       </aside>
     </div>
   </section>
 
-  <!-- 5. RELAX ESSENTIALS (PRODUCTS) SECTION -->
+  <!-- 5. PRODUCTS (GRID #2) -->
   <section id="products" class="page-section">
-    <div class="product-grid-section">
-      <h2 class="grid-title">🌿 Stress Relief & Chill Essentials</h2>
-      
-      <div class="product-grid">
-        <div class="product-card">
-          <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=400&q=80" alt="Essential Oils">
-          <div class="product-info">
-            <h3>Essential Oils</h3>
-            <p>Lavender & Chamomile scents to calm your mind.</p>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <img src="https://i.pinimg.com/1200x/e8/8a/ea/e88aea609802b5b52e59e1ac1c4e0f6b.jpg" alt="Scented Candle">
-          <div class="product-info">
-            <h3>Scented Candle</h3>
-            <p>Warm ambient light for total evening relaxation.</p>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=400&q=80" alt="Herbal Tea">
-          <div class="product-info">
-            <h3>Herbal Relief Tea</h3>
-            <p>A soothing warm drink to melt deadline stress away.</p>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStUoO7t9S4qH-zhSxcDcssNUx1wky3YBWurOPjbmw4bA&s=10" alt="Silk Eye Mask">
-          <div class="product-info">
-            <h3>Night Weighted Blanket</h3>
-            <p>Block out lights for a deep and uninterrupted sleep.</p>
-          </div>
-        </div>
-      </div>
+    <h2 style="text-align: center; margin-bottom: 20px;">🌿 Stress Relief Essentials</h2>
+    <div class="product-grid">
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=400&q=80" alt="Oil"><div class="product-info"><h3>Essential Oils</h3><p>Lavender scents.</p></div></div>
+      <div class="product-card"><img src="https://i.pinimg.com/1200x/e8/8a/ea/e88aea609802b5b52e59e1ac1c4e0f6b.jpg" alt="Candle"><div class="product-info"><h3>Scented Candle</h3><p>Ambient light.</p></div></div>
+      <div class="product-card"><img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=400&q=80" alt="Tea"><div class="product-info"><h3>Herbal Tea</h3><p>Soothing drink.</p></div></div>
+      <div class="product-card"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStUoO7t9S4qH-zhSxcDcssNUx1wky3YBWurOPjbmw4bA&s=10" alt="Blanket"><div class="product-info"><h3>Weighted Blanket</h3><p>Deep sleep.</p></div></div>
     </div>
   </section>
 
-  <!-- 6. CALENDAR SECTION -->
+  <!-- 6. CALENDAR (GRID #3 & GRID #4) -->
   <section id="calendar" class="page-section">
-    <div class="calendar-section">
-      <div class="calendar-card">
-        <header class="calendar-header">
-          <h2>📅 Your Friend Calendar</h2>
-          <p>Your friendly calendar that will help you manage your deadlines with proper rest! 💚</p>
-        </header>
-
-        <div class="calendar-days">
-          <div>Sun</div>
-          <div>Mon</div>
-          <div>Tue</div>
-          <div>Wed</div>
-          <div>Thu</div>
-          <div>Fri</div>
-          <div>Sat</div>
+    <div class="calendar-card">
+      <h2 style="text-align: center; margin-bottom: 15px;">📅 Your Friend Calendar</h2>
+      <div class="calendar-days"><div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div></div>
+      <div class="calendar-grid">
+        <div class="date rest-day"><span>1</span><span class="tag">REST 🧘</span></div>
+        <div class="date"><span>2</span>Grandma's Birthday</div>
+        <div class="date"><span>3</span></div>
+        <div class="date"><span>4</span></div>
+        <div class="date deadline"><span>5</span><span class="tag">DEADLINE ⚠️</span></div>
+        <div class="date"><span>6</span></div>
+        <div class="date rest-day"><span>7</span><span class="tag">REST ☕</span></div>
+        
+        <!-- GRID REQUIREMENT #4: EVENT 1 (SPANS 2 COLUMNS) -->
+        <div class="date span-2">
+          <span>8 - 9</span>
+          <span class="tag tag-bini">2-DAY BINI FUN RUN 🌸🏃‍♀️</span>
+        </div>
+        
+        <div class="date"><span>10</span></div>
+        <div class="date"><span>11</span>ME TIME</div>
+        <div class="date"><span>12</span></div>
+        <div class="date deadline"><span>13</span><span class="tag">DEADLINE ⚠️</span></div>
+        <div class="date rest-day"><span>14</span><span class="tag">REST 😴</span></div>
+        <div class="date"><span>15</span>Create PPT for seminar</div>
+        
+        <!-- GRID REQUIREMENT #4: EVENT 2 (SPANS 3 COLUMNS) -->
+        <div class="date span-3">
+          <span>16 - 18</span>
+          <span class="tag tag-cyber">3-DAY CYBERSECURITY SEMINAR 💻🏻‍💻</span>
         </div>
 
-        <div class="calendar-grid">
-          <!-- Week 1 -->
-          <div class="date rest-day"><span class="num">1</span> <span class="tag">REST DAY 🧘</span></div>
-          <div class="date"><span class="num">2</span> <span class="sub-text">Work on Task 1</span></div>
-          <div class="date"><span class="num">3</span></div>
-          <div class="date"><span class="num">4</span> <span class="sub-text">Drafting</span></div>
-          <div class="date deadline"><span class="num">5</span> <span class="tag">DEADLINE ⚠️</span></div>
-          <div class="date"><span class="num">6</span></div>
-          <div class="date rest-day"><span class="num">7</span> <span class="tag">REST DAY ☕</span></div>
+        <div class="date"><span>19</span></div>
+        <div class="date"><span>20</span></div>
+        <div class="date"><span>21</span><span class="tag">Reporting/span></div>
+        <div class="date"><span>22</span><span class="tag">Go to church</span></div>
+        <div class="date"><span>23</span><span class="tag">Laundry</span></div>
+        <div class="date rest-day"><span>24</span><span class="tag">REST 🧘</span></div>
+        <div class="date"><span>25</span><span class="tag">Visit my psychologist<span></div>
+        <div class="date"><span>26</span><span class="tag">REVIEW</span></div>
+        <div class="date"><span>27</span><span class="tag">Publish Chapter 4</span></div>
+        <div class="date rest-day"><span>28</span><span class="tag">REST 🧘</span></div>
+        
 
-          <!-- Week 2 -->
-          <div class="date rest-day"><span class="num">8</span> <span class="tag">REST DAY 😴</span></div>
-          <div class="date"><span class="num">9</span></div>
-          <div class="date"><span class="num">10</span> <span class="sub-text">Review Code</span></div>
-          <div class="date"><span class="num">11</span></div>
-          <div class="date"><span class="num">12</span></div>
-          <div class="date deadline"><span class="num">13</span> <span class="tag">DEADLINE ⚠️</span></div>
-          <div class="date rest-day"><span class="num">14</span> <span class="tag">REST DAY 🌿</span></div>
-        </div>
-
-        <footer class="calendar-legend">
-          <span><strong style="color: #2e7d32;">🟩 Green:</strong> Mandatory Rest Days</span> | 
-          <span><strong style="color: #c62828;">🟥 Red:</strong> Important Deadlines</span>
-        </footer>
       </div>
     </div>
   </section>

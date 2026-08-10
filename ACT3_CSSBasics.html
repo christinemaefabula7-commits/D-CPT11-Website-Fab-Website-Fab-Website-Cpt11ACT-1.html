@@ -1,307 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+    <title>Zombie Scrolling</title>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Basics</title>
-
-     <h1>ACTIVITY 3: CSS Basics</h1>
-   
     <style>
-    p{
-        font-size:18px;
-        line-height:1.5;
-        text-align:justify;
-    }
+        p {
+            font-size: 18px;
+            line-height: 1.5;
+            text-align: justify;
+        }
 
-    a:link{
-        color: rgb(55, 150, 7);
-    }
+        a:link { color: blue; }
+        a:hover { color: red; }
+        a:visited { color: purple; }
 
-    a:hover{
-        color: rgb(9, 23, 153);
-    }
+        .important {
+            background-color: #fff3a3;
+            padding: 10px;
+            border: 2px solid #e6c84f;
+            margin: 15px;
+        }
 
-    a:visited{
-        color: purple;
-    }
+        #title {
+            color: darkblue;
+            text-align: center;
+        }
 
-    .highlight{
-        background-color: rgb(7, 206, 136);
-        color: black;
-        font-weight: bold;
-    }
+        .section {
+            padding: 20px;
+            margin: 20px;
+            border: 2px solid gray;
+            background: linear-gradient(to right, #dff6ff, #f5d9ff);
+        }
 
-    #specialHeading{
-        color: darkblue;
-        text-align: center;
-        text-decoration: underline;
-    }
-
-    div{
-        background: linear-gradient(to right, #d7f8ff, #ffffff);
-        padding: 20px;
-        margin: 20px;
-        border: 2px solid #af9d4c;
-        border-radius: 15px;
-
-    }
-
-    .wrapper{
-        width:450px;
-        margin:20px auto;
-        padding:20px;
-        text-align:center;
-        background:white;
-        border:2px solid #4CAF50;
-        border-radius:15px;
-    }
-
-    form{
-        width: 500px;
-        margin: 30px auto;
-        padding: 25px;
-        background-color: white;
-        border: 2px solid #4CAF50;
-        border-radius: 15px;
-        box-shadow: 0px 0px 10px gray;
-    }
-
-    img{
-        width: 220px;
-        height: 300px;
-        object-fit: cover;
-        border: 3px solid #2E8B57;
-        border-radius: 12px;
-    }
-
-    .gallery{
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 20px;
-        flex-wrap: nowrap;
-    }
-
-
-    .schedtable{
-        background: linear-gradient(to right,#d7f8ff,#ffffff);
-        padding:20px;
-        margin:20px;
-        border:2px solid #4CAF50;
-        border-radius:15px;
-    }
-
-    .container{
-        width:750px;
-        margin:20px auto;
-    }
-
-    .wrapper p{
-        text-align: center;
-    }
-
-    footer p{
-        text-align: center;
-    }
-
-    .centerText{
-        text-align: center;
-    }
-    figcaption{
-        text-align: center;
-        margin-top: 8px;
-        font-weight: bold;
-    }
-
-    header{
-        text-align: center;
-    }
-    header p{
-        text-align: center;
-    }
-    table{
-        margin: auto;
-    }
-    #specialHeading{
-        color: darkblue;
-        text-align: center;
-        text-decoration: underline;
-    }
+        .tip {
+            background-color: #e8f5e9;
+            padding: 15px;
+            margin: 20px;
+            border: 2px solid green;
+        }
     </style>
-        
-  
-    
 </head>
 
-<body style="background-color: rgb(195, 125, 94);">
-   
-    <header> 
-     <h1 id="specialHeading">The Author Dialogue</h1>
-        <p>Published: July 30, 2026</p>
-        <p>Author: Christine Mae Fabula</p>
-    </header>
-      
-    
-    <br>
+<body>
 
-   <article>
-    <section>
-      <h2>Content</h2>
-      <h3><i>How To Live Life With Magic?</i></h3>
-        <div>
-            <p>Life feels magical when we <span class="highlight">learn to appreciate the little things around us</span>. A beautiful sunrise, the sound of rain, a warm meal, or a heartfelt conversation can remind us that happiness is often found in ordinary moments. Instead of constantly chasing big achievements, we can discover that life becomes brighter when we slow down and notice the beauty that has always been there.</p>
-            <p>Living life with magic also means choosing gratitude every day. When we <span class="highlight">focus on what we have instead of what we lack</span>, our perspective changes. Every challenge becomes a lesson, every mistake becomes an opportunity to grow, and every new day becomes another chance to create meaningful memories. Gratitude allows us to see life as a wonderful journey rather than a series of problems.</p>
-            <p>Ultimately, living life with magic means <span class="highlight">believing that every person has a unique story to tell</span>. Dreams may take time, and obstacles may appear along the way, but hope gives us the courage to keep moving forward. When we embrace curiosity, appreciate every experience, and continue believing in ourselves, life becomes an adventure filled with wonder. The real magic has never been hidden in fantasy—<span class="highlight">it has always existed in the way we choose to see and live each day</span>.</p>
-        </div>
+<div class="section">
+    <h1 id="title">How to Cope with Zombie Scrolling</h1>
 
-    </section>
-    
-    <br>
+    <p>Cellphone addiction can make us scroll for hours without noticing the time. It can affect our sleep, focus, and time with family and friends.</p>
 
-    <div class="container">
+    <p class="important">Take short breaks from your phone and give yourself time to rest, study, and enjoy activities without a screen.</p>
 
-        <h3><i>List Of Hobbies To Do</i></h3>
-            <ol>
-                <li>Do Journaling (Helps you know yourself better.)</li> 
-                <li> Learn a New Language</li> 
-                <li>Try Cooking or Baking</li> 
-                <li>Read Bible in free time</li> 
-                <li>Have time with Nature</li> 
-                <li> Bond with family and friends</li>
-                <li>Do what makes you happy without needing external validations</li> 
-                <li>Pray</li>
-                <li>Celerate small wins</li> 
-            
-            </ol>
-    </div>
-    <br>
+    <p class="important">Set a limit for social media and avoid using your phone when you are about to sleep.</p>
+</div>
 
-    <div class="container">
-        <h3><i>My Favorite Hobbies</i></h3>
+<div class="tip">
+    <h2>Simple Ways to Cope</h2>
 
-        <ul>
-            <li>Writing</li>
-            <li>Watching movies</li>
-            <li>Eating</li>
-            <li>Sleeping</li>
-            <li>Reading</li>
-            <li>Listening to self development podcast</li>
-        </ul>
-    </div>
+    <p>Turn off unnecessary notifications, put your phone away while studying, and spend more time doing hobbies or talking with people.</p>
 
-    <br>
+    <p>You can also learn more about healthy screen habits through
+    <a href="https://www.health.harvard.edu">this resource</a>.</p>
+</div>
 
-        <h2>Inspirational Arts </h2>
+<div class="section">
+    <h2>Remember</h2>
 
-    <div class="gallery">
-            <figure>
-            <img src="https://i.pinimg.com/1200x/6e/1e/8c/6e1e8c3653c7b0845be6ee1fd4eea7d8.jpg" alt="Student studying" width="300">
-            <figcaption>In Christ Alone.</figcaption>
-        </figure>
-
-         <figure>
-            <img src="https://i.pinimg.com/736x/e0/35/2f/e0352f22772341f948b43a90b12bb86d.jpg" alt="Student studying" width="300">
-            <figcaption>Art Of Living</figcaption>
-        </figure>
-
-        <figure>
-            <img src="https://i.pinimg.com/736x/75/91/01/759101888b02cb37f3c079522dd29125.jpg" alt="Student studying" width="300">
-            <figcaption>The Progress of Not Quitting</figcaption>
-        </figure>
-
-         <figure>
-
-            <img src="https://i.pinimg.com/736x/0d/a5/c4/0da5c4c35447a0b8c778e760e427b925.jpg" alt="Student studying" width="300">
-            <figcaption>The World Behind Life Expectations</figcaption>
-    
-       </div>
-
-        <br>
-
-    <div class="schedtable">
-        <h2>Class Schedule</h2>
-
-        
-        <table border="1" cellpadding="8">
-
-           
-            <tr>
-                <th style="background-color: rgb(233, 235, 135);">Subject</th>
-                <th style="background-color: rgb(227, 235, 135);">Day</th>
-                <th style="background-color: rgb(235, 223, 135);">Time</th>
-                <th style="background-color: rgb(235, 232, 135);">Room</th>
-            </tr>
-
-            <tr>
-                <td>CPT13: Data Structure & Algorithm</td>
-                <td>Monday</td>
-                <td>8:00 AM - 10:00 AM</td>
-                <td>EBB 201</td>
-            </tr>
-
-            <tr>
-                <td>CPT11: Web Development</td>
-                <td>Tuesday</td>
-                <td>1:00 PM - 3:30 PM</td>
-                <td>EBB 204</td>
-            </tr>
-
-             <tr>
-                <td>STAT01: Basic Statistics</td>
-                <td>Wednesday</td>
-                <td>9:00 AM - 10:30 AM</td>
-                <td>EBB 204</td>
-            </tr>
-
-            <tr>
-                <td>Advanced Microcontroller</td>
-                <td>Thursday</td>
-                <td>7:30 AM - 10:30 AM</td>
-                <td>EBB 203</td>
-            </tr>
-
-             <tr>
-                <td>Online Class</td>
-                <td>Friday</td>
-                <td>7:30 AM - 12:00 PM</td>
-                <td>EBB 203</td>
-            </tr>
-
-
-        </table>
-       
-          <br><br>
-          </div>
-
-     </article>
-        
-
-
- <br><br>
-
-  
-     <div class="wrapper">
-        <p class="centerText">
-            Visit my favorite website:
-            <a href="https://open.spotify.com/" target="_blank">Spotify</a>
-        </p>
-
-    </div>
-
-
-    <footer id="bottom">
-      
-            <hr>
-            <p><b>You have reached the bottom of the page.Thank your for reading!</b></p>
-            <p>&copy; 2026, Christine Mae Fabula. All Rights Reserved.</p>
-      
-    </footer>
-    
-        
-
-   
+    <p>Your phone is a useful tool, but it should not control your time. Learn to put it down and enjoy the real world around you.</p>
+</div>
 
 </body>
 </html>
