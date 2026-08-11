@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Activity 5 - Responsive Design</title>
+
+    <style>
+        /* Mobile-first: single column */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: lightblue;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+        }
+
+        p {
+            font-size: 16px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            padding: 15px;
+        }
+
+        .content, .sidebar {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Larger screens */
+        @media (min-width: 600px) {
+            body {
+                background: lightgreen;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            p {
+                font-size: 18px;
+            }
+
+            .container {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        /* Mobile devices */
+        @media (max-width: 599px) {
+            .sidebar {
+                display: none;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Responsive Web Page</h1>
+        <p>This page adjusts to different screen sizes.</p>
+    </header>
+
+    <div class="container">
+
+        <main class="content">
+            <h2>About Responsive Design</h2>
+            <p>
+                Responsive design makes a webpage look good
+                on computers, tablets, and mobile devices.
+            </p>
+
+            <img src="https://via.placeholder.com/600x300"
+                 alt="Sample Image">
+        </main>
+
+        <aside class="sidebar">
+            <h2>Sidebar</h2>
+            <p>This sidebar is hidden on small screens.</p>
+        </aside>
+
+    </div>
+
+</body>
+</html>
