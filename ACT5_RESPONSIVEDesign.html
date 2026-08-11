@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>How to Start a Business</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #eef7ee;
+        }
+
+        header {
+            background: #2e7d32;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        h1 {
+            font-size: 30px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            padding: 25px;
+        }
+
+        .content, .sidebar {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px #aaa;
+        }
+
+        h2 {
+            color: #2e7d32;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 8px; 
+        }
+
+        @media (max-width: 599px) {
+            body {
+                background: #fff1e6;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+
+            .sidebar {
+                display: none;
+            }
+        }
+
+        @media (min-width: 600px) {
+            .container {
+                grid-template-columns: 2fr 1fr;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>How to Start a Business</h1>
+        <p>Simple steps for turning an idea into a business.</p>
+    </header>
+
+    <div class="container">
+
+        <main class="content">
+            <h2>Start With an Idea</h2>
+
+            <p>
+                Starting a business begins with a good idea.
+                Know what product or service you want to offer
+                and identify the people who may need it.
+            </p>
+
+            <img src="https://i.pinimg.com/736x/a9/a3/f6/a9a3f6cf7a08fb817b4e06f3bb8e8d74.jpg"
+                 alt="Business Image">
+
+            <h2>Basic Steps</h2>
+
+            <p>
+                Plan your business, know your customers,
+                prepare your budget, and promote your product.
+                Start small and improve as your business grows.
+            </p>
+        </main>
+
+        <aside class="sidebar">
+            <h2>Quick Tips</h2>
+            <p>✓ Know your customers</p>
+            <p>✓ Make a simple budget</p>
+            <p>✓ Promote your product</p>
+            <p>✓ Keep learning</p>
+        </aside>
+
+    </div>
+
+</body>
+</html>
