@@ -47,6 +47,45 @@
         font-size: 16;
     }
 
+   .FEEDBACK {
+    width: 800px;
+    margin: 30px auto;
+    padding: 25px;
+    background: rgb(107, 107, 60);
+    border: 2px solid #545127;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px gray;
+}
+
+ .FeedbackSpace {
+    width: 700px;
+    margin: 0 auto 25px auto;
+    padding: 20px;
+    background: rgb(79, 132, 171);
+    border: 2px solid #545127;
+    border-radius: 15px;
+    text-align: center;
+}
+
+
+.FeedbackSpace h1 {
+    margin: 5px;
+    color: white;
+}
+
+.FeedbackSpace h4 {
+    margin: 10px;
+    color: white;
+}
+
+.container {
+    width: 700px;
+    margin: auto;
+    padding: 20px;
+    background: rgb(213, 214, 164);
+    border-radius: 10px;
+}
+
 
   </style>
 </head>
@@ -79,9 +118,6 @@
 
 <p>However, hindi rin dapat puro benefits lang ang pag-uusapan. Questions about environmental protection, water resources, local communities, and how the country's natural resources will be managed have also been raised. The government has said that the proposed project should follow Philippine laws and include safeguards for the environment and affected communities.</p>
 
-<p>So, is Pax Silica a big opportunity for the Philippines, or should Filipinos be more cautious about it? As this project develops, it is important for us to understand both its possible benefits and its concerns before forming an opinion <a href="https://www.pna.gov.ph/articles/1280396" target="_blank">(NPhilippine News Agency).</a></p>
-</section>
-
 
 
 <div class="ContentTitle">
@@ -89,18 +125,122 @@
 </div>
 
 <p><i><b>“Sana may trabaho para sa mga Pilipino, hindi lang puro foreign investors ang makinabang.”</b></i>
-<br> <a href="https://www.philstar.com/business/2026/04/24/2523089/pax-silica?utm_source=chatgpt.com" target="_blank">(PhilStar.com).</a></p>
+    <a href="https://www.philstar.com/business/2026/04/24/2523089/pax-silica" target="_blank">(PhilStar.com)</a>
 </p>
-
-<p><i><b>“Okay ang technology, pero paano naman ang mga magsasaka na maaaring maapektuhan?”</b></i>
-<br> <a href="https://www.philstar.com/lifestyle/on-the-radar/2026/07/28/2545335/at-what-cost-brent-manalo-questions-pax-silica-hub-construction?utm_source=chatgpt.com" target="_blank">(PhilStar.com).</a></p>
+<p><i><b>“Okay ang technology, pero paano naman ang mga magsasaka na maaaring maapektuhan?”</b></i></p>
 </p></p>
-
-<p><i><b>“Okay ang technology at trabaho, pero huwag naman sanang kapalit nito ang kalikasan at tubig ng mga Pilipino.”</b></i>
-<br> <a href="https://www.pna.gov.ph/articles/1279807?utm_source=chatgpt.com" target="_blank">(Philippine News).</a></p>
-</p></p>
+<a href="https://www.philstar.com/lifestyle/on-the-radar/2026/07/28/2545335/at-what-cost-brent-manalo-questions-pax-silica-hub-construction" target="_blank">(PhilStar.com)</a>
+<p><i><b>“Okay ang technology at trabaho, pero huwag naman sanang kapalit nito ang kalikasan at tubig ng mga Pilipino.”</b></i></p>
+<a href="https://www.pna.gov.ph/articles/1279807" target="_blank">(Philippine News Agency)</a>
 </section>
+
+
+
 </div>
+
+<div class="FEEDBACK">
+
+<div class="FeedbackSpace"> 
+        <center>
+            <h1>Speak Up, Philippines!</h1>
+            <h4><i>"Share your thoughts, concerns, and hopes about Pax Silica."</i></h4>
+        </center>
+        </div>
+
+
+
+
+    <div class="container">
+        <form action="submit.php" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+         <label for="phone">Phone:</label>
+        <input type="phone" id="phone" name="phone" required><br><br>
+
+        <label for="bibliography"Your Voice:</label><br>
+        <textarea id="bibliography" name="bibliography" rows="10" cols="50" required></textarea><br><br>
+        
+        <label>Type of Work:</label><br>
+
+<input type="radio" id="farmer" name="job" value="Farmer">
+<label for="farmer">Farmer</label><br>
+
+<input type="radio" id="fisher" name="job" value="Fisher">
+<label for="fisher">Fisher</label><br>
+
+<input type="radio" id="vendor" name="job" value="Vendor">
+<label for="vendor">Vendor</label><br>
+
+<input type="radio" id="driver" name="job" value="Driver">
+<label for="driver">Driver</label><br>
+
+<input type="radio" id="construction" name="job" value="Construction Worker">
+<label for="construction">Construction Worker</label><br>
+
+<input type="radio" id="factory" name="job" value="Factory Worker">
+<label for="factory">Factory Worker</label><br>
+
+<input type="radio" id="private" name="job" value="Private Employee">
+<label for="private">Private Employee</label><br>
+
+<input type="radio" id="government" name="job" value="Government Employee">
+<label for="government">Government Employee</label><br>
+
+<input type="radio" id="business" name="job" value="Business Owner">
+<label for="business">Business Owner</label><br>
+
+<input type="radio" id="student" name="job" value="Student">
+<label for="student">Student</label><br><br>
+
+        <label>Preferred Contact Method:</label><br>
+
+        <input type="radio" id="phone" name="contact" value="Phone" required>
+        <label for="phone">Phone</label><br>
+
+        <input type="radio" id="emailContact" name="contact" value="Email">
+        <label for="emailContact">Email</label><br>
+
+        <input type="radio" id="emailContact" name="contact" value="Email">
+        <label for="emailContact">Instagram</label><br><br>
+
+        <label for="country">Country:</label>
+
+        <select id="Region" name="Region" required>
+            <option value="">--Select Region--</option>
+            <option>NCR - National Capital Region</option>
+            <option>CAR - Cordillera Administrative Region</option>
+            <option>Region III - Central Luzon</option>
+            <option>Region IV-A - CALABARZON</option>
+            <option>Region VII - Central Visayas</option>
+        </select>
+
+        <br><br>
+
+            <label for="profile">Profile Picture:</label>
+
+        <input type="file" id="profile" name="profile">
+
+        <br><br>
+        <center>
+
+        <input type="submit" value="Submit Entry">
+        <input type="reset" value="Clear">
+
+        </center>
+
+        </form>
+
+            
+      </div>
+
+      </div>
+
+
+
 
 </body>
 </html>
