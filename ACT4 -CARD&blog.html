@@ -1,215 +1,606 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HAPPY LANG CARD & BLOGS</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; background: #cbf1ff; min-height: 100vh; display: flex; flex-direction: column; }
-    
-    .site-header { background: #4b4919; color: #fff; text-align: center; padding: 20px; }
-    .site-header p { color: #cbd5e0; font-size: 0.95rem; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movie Chill Hub</title>
 
-    /* FLEXBOX #1: EVENLY SPACED NAVBAR */
-    .navbar { background: #c8bc20; padding: 10px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 5px #0001; }
-    .nav-links { display: flex; justify-content: space-evenly; align-items: center; list-style: none; flex-wrap: wrap; }
-    .nav-links a { color: #fff; text-decoration: none; font-weight: bold; padding: 8px 12px; border-radius: 4px; }
-    .nav-links a:hover { background: #fff; color: #1f72ef; }
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
 
-    /* NAVIGATION ROUTING & TOP SPACING */
-    .page-section { display: none; padding: 40px 20px 20px; flex: 1; }
-    .page-section:target { display: block; }
-    body:has(.page-section:target) #home { display: none; }
-    body:not(:has(.page-section:target)) #home, #home:target { display: block !important; }
+body{
+    font-family:Arial,sans-serif;
+    background:#fff5f7;
+    color:#333;
+}
 
-    /* FLEXBOX #2: CENTERED CARDS LAYOUT */
-    .card-container { display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; margin: 20px 0 30px; }
-    .card { background: #75daff; padding: 20px; width: 250px; border-radius: 8px; box-shadow: 0 4px 8px #0002; text-align: center; }
+header{
+    background:#5b3b6f;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
 
-    .hero-banner { position: relative; max-width: 900px; margin: 0 auto; border-radius: 12px; overflow: hidden; }
-    .hero-banner img { width: 100%; height: 300px; object-fit: cover; }
-    .hero-overlay { position: absolute; bottom: 0; width: 100%; background: linear-gradient(transparent, #0008); color: #fff; padding: 20px; text-align: center; }
+header p{
+    margin-top:8px;
+    color:#f5dffb;
+}
 
-    /* FLEXBOX #3: RESPONSIVE IMAGE GALLERY THAT WRAPS */
-    .gallery-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; max-width: 900px; margin: 10px auto; }
-    .meme-card { position: relative; width: 200px; height: 200px; border-radius: 8px; overflow: hidden; }
-    .meme-card img { width: 100%; height: 100%; object-fit: cover; }
-    .meme-text { position: absolute; left: 50%; transform: translateX(-50%); width: 90%; color: #fff; font-family: 'Impact', sans-serif; font-size: 13px; text-align: center; text-shadow: 2px 2px 0 #000, -2px -2px 0 #000; pointer-events: none; }
-    .meme-text.top { top: 8px; } .meme-text.bottom { bottom: 8px; } .meme-text.center { top: 50%; transform: translate(-50%, -50%); }
+/* FLEXBOX #1 */
+nav{
+    background:#e6a8c2;
+    padding:10px;
+    position:sticky;
+    top:0;
+    z-index:5;
+}
 
-    /* FLEXBOX #4: SINGLE ELEMENT CENTERED IN VIEWPORT */
-    .hero-container { display: flex; justify-content: center; align-items: center; min-height: 45vh; }
-    .centered-box { background: #fff; padding: 30px; border-radius: 12px; text-align: center; max-width: 400px; box-shadow: 0 6px 12px #0002; }
+nav ul{
+    display:flex;
+    justify-content:space-evenly;
+    flex-wrap:wrap;
+    list-style:none;
+}
 
-    /* GRID #1: TWO-COLUMN BLOG LAYOUT */
-    .blog-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; max-width: 900px; margin: 10px auto; }
-    .main-content, .sidebar { background: #fff; padding: 20px; border-radius: 8px; }
-    .sidebar ul { list-style: none; line-height: 1.8; }
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    padding:8px 12px;
+    border-radius:5px;
+}
 
-    /* GRID #2: FOUR-COLUMN PRODUCT GRID (RESPONSIVE) */
-    .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; max-width: 900px; margin: 10px auto; }
-    .product-card { background: #fff; border-radius: 8px; overflow: hidden; text-align: center; }
-    .product-card img { width: 100%; height: 120px; object-fit: cover; }
-    .product-info { padding: 10px; }
+nav a:hover{
+    background:white;
+    color:#5b3b6f;
+}
 
-    /* GRID #3 & #4: CALENDAR LAYOUT & SPANNING MULTIPLE COLUMNS */
-    .calendar-card { background: #fff; border-radius: 12px; padding: 20px; max-width: 800px; margin: 10px auto; }
-    .calendar-days, .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; text-align: center; }
-    .date { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 6px; min-height: 65px; padding: 4px; display: flex; flex-direction: column; justify-content: space-between; font-size: 0.8rem; }
-    .date.rest-day { background: #e8f5e9; border-color: #a5d6a7; }
-    .date.deadline { background: #ffebee; border-color: #ef9a9a; }
-    
-    /* GRID REQUIREMENT #4: MULTIPLE SPANS (2 & 3 COLUMNS) */
-    .date.span-2 { grid-column: span 2; background: #ffe4e8; border-color: #fca5a5; }
-    .date.span-3 { grid-column: span 3; background: #e0f2fe; border-color: #7dd3fc; }
+/* ONE SCREEN PER MENU */
+.page{
+    display:none;
+    padding:35px 20px;
+}
 
-    .tag { font-size: 0.6rem; font-weight: bold; border-radius: 3px; padding: 2px; }
-    .rest-day .tag { background: #c8e6c9; color: #1b5e20; }
-    .deadline .tag { background: #ffcdd2; color: #b71c1c; }
-    .tag-bini { background: #f43f5e; color: #fff; }
-    .tag-cyber { background: #0284c7; color: #fff; }
+.page:target{
+    display:block;
+}
 
-    @media (max-width: 768px) {
-      .product-grid { grid-template-columns: repeat(2, 1fr); }
-      .blog-layout { grid-template-columns: 1fr; }
+body:not(:has(.page:target)) #home{
+    display:block;
+}
+
+/* HOME */
+.welcome{
+    text-align:center;
+    max-width:850px;
+    margin:auto;
+}
+
+.welcome h1{
+    font-size:38px;
+    color:#5b3b6f;
+    margin-bottom:15px;
+}
+
+.welcome p{
+    font-size:19px;
+}
+
+.home-card{
+    max-width:850px;
+    margin:30px auto;
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 4px 10px #bbb;
+}
+
+.home-card img{
+    width:100%;
+    height:300px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+.home-card h2{
+    margin-top:15px;
+    color:#5b3b6f;
+}
+
+/* FLEXBOX #2 */
+.cards{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin:25px auto;
+}
+
+.card{
+    background:white;
+    width:230px;
+    padding:18px;
+    text-align:center;
+    border-radius:12px;
+    box-shadow:0 3px 8px #bbb;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+/* FLEXBOX #3 */
+.gallery{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+    max-width:900px;
+    margin:25px auto;
+}
+
+.movie{
+    width:220px;
+    position:relative;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 3px 8px #aaa;
+}
+
+.movie img{
+    width:100%;
+    height:300px;
+    object-fit:cover;
+}
+
+.movie figcaption{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    padding:10px;
+    background:#0009;
+    color:white;
+    text-align:center;
+    font-weight:bold;
+}
+
+/* GRID #1 */
+.blog{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:20px;
+    max-width:900px;
+    margin:auto;
+}
+
+.content,.side{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+}
+
+.content h3{
+    color:#5b3b6f;
+    margin-top:15px;
+}
+
+.side li{
+    margin:10px 0;
+    list-style:none;
+}
+
+/* FLEXBOX #4 */
+.center{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:45vh;
+}
+
+.message{
+    background:white;
+    padding:30px;
+    text-align:center;
+    border-radius:15px;
+    box-shadow:0 4px 10px #bbb;
+    max-width:400px;
+}
+
+/* GRID #2 */
+.products{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    max-width:700px;
+    margin:25px auto;
+}
+
+.product{
+    background:white;
+    text-align:center;
+    border-radius:10px;
+    padding:20px;
+    box-shadow:0 3px 7px #ccc;
+}
+
+.product:hover{
+    transform:scale(1.03);
+}
+
+/* GRID #3 */
+.calendar{
+    max-width:850px;
+    margin:auto;
+    background:white;
+    padding:20px;
+    border-radius:12px;
+}
+
+.days,.dates{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:6px;
+    text-align:center;
+}
+
+.days div{
+    font-weight:bold;
+    padding:8px;
+}
+
+.date{
+    min-height:65px;
+    padding:8px;
+    background:#f9e8ef;
+    border-radius:6px;
+    font-size:13px;
+}
+
+.rest{
+    background:#d7f0dc;
+}
+
+/* GRID #4 */
+.span2{
+    grid-column:span 2;
+    background:#ffd6e5;
+}
+
+.span3{
+    grid-column:span 3;
+    background:#d8ecff;
+}
+
+@media(max-width:700px){
+    .blog{
+        grid-template-columns:1fr;
     }
-  </style>
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .welcome h1{
+        font-size:30px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-  <header class="site-header">
-    <h1>HAPPY LANG BLOG</h1>
-    <p>"Welcome to Happy Lang Blog, where happiness feels like taking a break from all your deadlines"</p>
-  </header>
+<header>
+<h1>🎬 Movie Chill Hub</h1>
+<p>Reviews, vibes, and a little movie escape.</p>
+</header>
 
-  <nav class="navbar">
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#memes">Memes & Vibes</a></li>
-      <li><a href="#subscribe">Subscribe</a></li>
-      <li><a href="#articles">Articles</a></li>
-      <li><a href="#products">Relax Essentials</a></li>
-      <li><a href="#calendar">Calendar</a></li>
-    </ul>
-  </nav>
+<nav>
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#movies">Movies</a></li>
+<li><a href="#review">Review</a></li>
+<li><a href="#essentials">Essentials</a></li>
+<li><a href="#calendar">Cinema Calendar</a></li>
+</ul>
+</nav>
 
-  <!-- 1. HOME (FLEXBOX #2) -->
-  <section id="home" class="page-section">
-    <h2 style="text-align: center; margin-bottom: 20px;">Welcome to Happy Lang Blog!</h2>
-    <div class="card-container">
-      <div class="card"><h3>Take a Breath</h3><p>Inhale peace, exhale deadline stress.</p></div>
-      <div class="card"><h3>Hydrate First</h3><p>Drink water before solving that bug.</p></div>
-      <div class="card"><h3>Good Sleep</h3><p>Rest is part of your productivity cycle.</p></div>
-    </div>
-    <div class="hero-banner">
-      <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&q=80" alt="Banner">
-      <div class="hero-overlay">
-        <h3>✨ Welcome to Your Safe Space ✨</h3>
-        <p>Your go-to hub for relaxation and good vibes.</p>
-      </div>
-    </div>
-  </section>
 
-  <!-- 2. MEMES (FLEXBOX #3) -->
-  <section id="memes" class="page-section">
-    <div class="gallery-container">
-      <figure class="meme-card"><img src="https://i.pinimg.com/1200x/55/c2/67/55c267203b80bce71e78984398f0e0be.jpg" alt="Meme"><figcaption class="meme-text top">ME AFTER PILIIN MAG-RELAX</figcaption><figcaption class="meme-text bottom">KESA GAWIN ANG DEADLINES</figcaption></figure>
-      <figure class="meme-card"><img src="https://i.pinimg.com/736x/50/7a/f3/507af32ac6a4cba547c91fed07369c9f.jpg" alt="Meme"><figcaption class="meme-text top">MY FACE WHEN I FINALLY</figcaption><figcaption class="meme-text bottom">UNDERSTAND THE LESSON</figcaption></figure>
-      <figure class="meme-card"><img src="https://i.pinimg.com/736x/09/54/40/095440218afa1ada1fb3b645b3eeaeba.jpg" alt="Meme"><figcaption class="meme-text center">SEEING MIRROR ANYWHERE</figcaption></figure>
-      <figure class="meme-card"><img src="https://i.pinimg.com/736x/31/3b/fe/313bfe782a27f0d88899cfa50f1b7bcd.jpg" alt="Meme"><figcaption class="meme-text bottom">CHOSE WRONG OPTION IN EXAM</figcaption></figure>
-      <figure class="meme-card"><img src="https://i.pinimg.com/1200x/f4/63/6c/f4636c91a2c029c7686a8d11fa527b54.jpg" alt="Meme"><figcaption class="meme-text bottom">SURVIVED 4 MAJOR SUBJECTS</figcaption></figure>
-    </div>
-  </section>
+<!-- HOME -->
+<section id="home" class="page">
 
-  <!-- 3. SUBSCRIBE (FLEXBOX #4) -->
-  <section id="subscribe" class="page-section">
-    <div class="hero-container">
-      <div class="centered-box">
-        <h2>🧠 Mind & Psychology News</h2>
-        <p>Subscribe for weekly psychology insights and mental health updates!</p>
-        <form style="display: flex; gap: 8px; margin-top: 15px;">
-          <input type="email" placeholder="Enter your email..." style="flex: 1; padding: 8px; border-radius: 4px; border: 1px solid #ccc;" required>
-          <button type="submit" style="background: #1f72ef; color: white; border: none; padding: 8px 12px; border-radius: 4px; font-weight: bold; cursor: pointer;">Subscribe</button>
-        </form>
-      </div>
-    </div>
-  </section>
+<div class="welcome">
+<h1>🎬 ARE YOU READY FOR A MOVIE DATE?💗</h1>
 
-  <!-- 4. ARTICLES (GRID #1) -->
-  <section id="articles" class="page-section">
-    <div class="blog-layout">
-      <main class="main-content">
-        <h2>🌸 Bakit Mahalagang Magpahinga?</h2>
-        <p>Ang pagpapahinga ay hindi kabawasan sa pagiging produktibo. Ito ay kailangan para magpatuloy. Kahit 10-15 minuto lang na pag-layo sa screen, malaking tulong na para ma-recharge ang iyong isip at katawan.</p>
-      </main>
-      <aside class="sidebar">
-        <h3>📌 Quick Self-Care</h3>
-        <ul><li>☕ Coffee & Chill</li><li>🎶 Relaxing Playlist</li><li>🌿 Breathing Exercise</li></ul>
-      </aside>
-    </div>
-  </section>
+<p><i><b>
+"Ask your crush, invite your family, or bring your bestie!"🍿🎬
+</b></i></p>
 
-  <!-- 5. PRODUCTS (GRID #2) -->
-  <section id="products" class="page-section">
-    <h2 style="text-align: center; margin-bottom: 20px;">🌿 Stress Relief Essentials</h2>
-    <div class="product-grid">
-      <div class="product-card"><img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=400&q=80" alt="Oil"><div class="product-info"><h3>Essential Oils</h3><p>Lavender scents.</p></div></div>
-      <div class="product-card"><img src="https://i.pinimg.com/1200x/e8/8a/ea/e88aea609802b5b52e59e1ac1c4e0f6b.jpg" alt="Candle"><div class="product-info"><h3>Scented Candle</h3><p>Ambient light.</p></div></div>
-      <div class="product-card"><img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=400&q=80" alt="Tea"><div class="product-info"><h3>Herbal Tea</h3><p>Soothing drink.</p></div></div>
-      <div class="product-card"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStUoO7t9S4qH-zhSxcDcssNUx1wky3YBWurOPjbmw4bA&s=10" alt="Blanket"><div class="product-info"><h3>Weighted Blanket</h3><p>Deep sleep.</p></div></div>
-    </div>
-  </section>
+</div>
 
-  <!-- 6. CALENDAR (GRID #3 & GRID #4) -->
-  <section id="calendar" class="page-section">
-    <div class="calendar-card">
-      <h2 style="text-align: center; margin-bottom: 15px;">📅 Your Friend Calendar</h2>
-      <div class="calendar-days"><div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div></div>
-      <div class="calendar-grid">
-        <div class="date rest-day"><span>1</span><span class="tag">REST 🧘</span></div>
-        <div class="date"><span>2</span>Grandma's Birthday</div>
-        <div class="date"><span>3</span></div>
-        <div class="date"><span>4</span></div>
-        <div class="date deadline"><span>5</span><span class="tag">DEADLINE ⚠️</span></div>
-        <div class="date"><span>6</span></div>
-        <div class="date rest-day"><span>7</span><span class="tag">REST ☕</span></div>
-        
-        <!-- GRID REQUIREMENT #4: EVENT 1 (SPANS 2 COLUMNS) -->
-        <div class="date span-2">
-          <span>8 - 9</span>
-          <span class="tag tag-bini">2-DAY BINI FUN RUN 🌸🏃‍♀️</span>
-        </div>
-        
-        <div class="date"><span>10</span></div>
-        <div class="date"><span>11</span>ME TIME</div>
-        <div class="date"><span>12</span></div>
-        <div class="date deadline"><span>13</span><span class="tag">DEADLINE ⚠️</span></div>
-        <div class="date rest-day"><span>14</span><span class="tag">REST 😴</span></div>
-        <div class="date"><span>15</span>Create PPT for seminar</div>
-        
-        <!-- GRID REQUIREMENT #4: EVENT 2 (SPANS 3 COLUMNS) -->
-        <div class="date span-3">
-          <span>16 - 18</span>
-          <span class="tag tag-cyber">3-DAY CYBERSECURITY SEMINAR 💻🏻‍💻</span>
-        </div>
+<div class="home-card">
 
-        <div class="date"><span>19</span></div>
-        <div class="date"><span>20</span></div>
-        <div class="date"><span>21</span><span class="tag">Reporting/span></div>
-        <div class="date"><span>22</span><span class="tag">Go to church</span></div>
-        <div class="date"><span>23</span><span class="tag">Laundry</span></div>
-        <div class="date rest-day"><span>24</span><span class="tag">REST 🧘</span></div>
-        <div class="date"><span>25</span><span class="tag">Visit my psychologist<span></div>
-        <div class="date"><span>26</span><span class="tag">REVIEW</span></div>
-        <div class="date"><span>27</span><span class="tag">Publish Chapter 4</span></div>
-        <div class="date rest-day"><span>28</span><span class="tag">REST 🧘</span></div>
-        
 
-      </div>
-    </div>
-  </section>
+<img src="https://i.pinimg.com/736x/c9/70/9f/c9709f23713d847047e0f350179b8e95.jpg"
+alt="Movie Welcome">
+
+<h2>🍿 Lights. Camera. Memories!</h2>
+
+<p>
+Welcome to Movie Chill Hub, your little space for
+movies, reviews, and relaxing cinema moments.
+</p>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+<h3>🎞️ Watch</h3>
+<p>Choose a movie and enjoy the story.</p>
+</div>
+
+<div class="card">
+<h3>💭 Feel</h3>
+<p>Experience the emotions behind every story.</p>
+</div>
+
+<div class="card">
+<h3>🍿 Relax</h3>
+<p>Grab your favorite snack and chill.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MOVIES -->
+<section id="movies" class="page">
+
+<h2 style="text-align:center">🎬 Featured Movies</h2>
+
+<div class="gallery">
+
+  <figure class="movie">
+<img src="https://i.pinimg.com/736x/a8/60/2c/a8602cfd5f6f1612beb5a86bfceb6cb0.jpg"
+alt="Mr.Bean Holiday">
+<figcaption>Mr. Bean Holiday</figcaption>
+</figure>
+
+<figure class="movie">
+<img src="https://i.pinimg.com/736x/49/fd/7b/49fd7b286883c347608eb449b9a14420.jpg"
+alt="The Hobbit">
+<figcaption>The Hobbit</figcaption>
+</figure>
+
+<figure class="movie">
+<img src="https://i.pinimg.com/736x/76/d8/6f/76d86f97917ac42a9ee3250ce33b009e.jpg"
+alt="God's Not Dead">
+<figcaption>God's Not Dead</figcaption>
+</figure>
+
+ <figure class="movie">
+<img src="https://i.pinimg.com/736x/a0/bf/eb/a0bfebcc8b0532bfe616e66b709a04be.jpg"
+alt="Inside Out">
+<figcaption>Inside Out</figcaption>
+</figure>
+
+<figure class="movie">
+<img src="https://i.pinimg.com/736x/3b/80/61/3b8061ddad4286885319e0f5a3ae68f2.jpg"
+alt="Jackie Chan">
+<figcaption>Panda Plan</figcaption>
+</figure>
+
+<figure class="movie">
+<img src="https://i.pinimg.com/1200x/bd/a5/b4/bda5b40ac202764c51d3ff2bec11016b.jpg"
+alt="MyRico">
+<figcaption>Got 2 Believe</figcaption>
+</figure>
+
+<figure class="movie">
+<img src="https://i.pinimg.com/736x/05/bc/2f/05bc2f0ccf97aacfa64fcac4f237cf80.jpg"
+alt="Lakorn">
+<figcaption>A Little Crazy Thing Called Love </figcaption>
+</figure>
+
+<figure class="movie">
+<img src="https://i.pinimg.com/736x/41/49/e8/4149e88bc78090b7232ce51bd4270e99.jpg"
+alt="Titanic">
+<figcaption>Titanic</figcaption>
+</figure>
+
+<figure class="movie">
+<img src="https://i.pinimg.com/1200x/0a/c6/f7/0ac6f7b892938979e0d50788c2274e9f.jpg"
+alt="T & J">
+<figcaption>Tom &Jerry: The Movie</figcaption>
+</figure>
+
+<figure class="movie">
+<img src="https://i.pinimg.com/736x/5c/09/5f/5c095ffccae479793a75a906b0ef4f98.jpg"
+alt="Cast Away">
+<figcaption>Cast Away</figcaption>
+</figure>
+
+
+
+</div>
+
+</section>
+
+
+<!-- REVIEW -->
+<section id="review" class="page">
+
+<div class="blog">
+
+<main class="content">
+
+<h2>⭐ Movie Reviews</h2>
+
+<h3>😂 Mr. Bean Holiday</h3>
+<p>A funny and light movie filled with simple adventures and hilarious moments.</p>
+
+<h3>🧙 The Hobbit</h3>
+<p>An exciting fantasy adventure about friendship, courage, and an unexpected journey.</p>
+
+<h3>🙏 God's Not Dead</h3>
+<p>A meaningful story about faith, courage, and standing for what you believe.</p>
+
+<h3>🌈 Inside Out</h3>
+<p>A colorful and emotional movie that shows why every feeling matters.</p>
+
+<h3>🐼 Panda Plan</h3>
+<p>A fun action-comedy with adventure, humor, and an unexpected mission.</p>
+
+<h3>💗 Got 2 Believe</h3>
+<p>A light romantic story about love, choices, and believing in second chances.</p>
+
+<h3>💕 A Little Crazy Thing Called Love</h3>
+<p>A sweet coming-of-age story about young love, friendship, and growing up.</p>
+
+<h3>🚢 Titanic</h3>
+<p>A romantic and emotional story about love, sacrifice, and loss.</p>
+
+<h3>🐱 Tom & Jerry: The Movie</h3>
+<p>A fun and playful movie filled with comedy, friendship, and classic chaos.</p>
+
+<h3>🏝️ Cast Away</h3>
+<p>A survival story about loneliness, hope, patience, and never giving up.</p>
+
+</main>
+
+<aside class="side">
+
+<h3>🍿 Top 5 Picks</h3>
+
+<ul>
+<li>💗 Romance: Titanic</li>
+<li>🙏 Family: God's Not Dead</li>
+<li>😂 Comedy: Mr. Bean Holiday</li>
+<li>🧙 Adventure: The Hobbit</li>
+<li>🏝️ Survival: Cast Away</li>
+</ul>
+
+</aside>
+
+</div>
+
+</section>
+
+<!-- ESSENTIALS -->
+<section id="essentials" class="page">
+
+<h2 style="text-align:center">🍿 Cinema Essentials</h2>
+
+<div class="products">
+  
+<div class="product">
+<h3>🍿 Popcorn</h3>
+<p>Movie classic!</p>
+</div>
+
+<div class="product">
+<h3>🥤 Drink</h3>
+<p>Stay refreshed.</p>
+</div>
+
+<div class="product">
+<h3>🛋️ Blanket</h3>
+<p>Stay cozy.</p>
+</div>
+
+<div class="product">
+<h3>🧻 Tissue</h3>
+<p>For those emotional scenes.</p>
+</div>
+
+<div class="product">
+<h3>🛏️ Pillow</h3>
+<p>Get extra comfy.</p>
+</div>
+
+<div class="product">
+<h3>🎧 Headphones</h3>
+<p>Better sound.</p>
+</div>
+
+</div>
+
+<div class="center">
+
+<div class="message">
+<h2>✨ Movie Reminder</h2>
+<p>
+Sometimes, taking a break and watching
+a good movie is all you need.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- CALENDAR -->
+<section id="calendar" class="page">
+
+<div class="calendar">
+
+<h2 style="text-align:center">
+💗 February Movie Date Calendar 📅🎬
+</h2>
+
+<div class="days">
+<div>Sun</div>
+<div>Mon</div>
+<div>Tue</div>
+<div>Wed</div>
+<div>Thu</div>
+<div>Fri</div>
+<div>Sat</div>
+</div>
+
+<div class="dates">
+
+<div class="date rest">1<br>Rest</div>
+<div class="date">2</div>
+<div class="date">3</div>
+
+<div class="date span2">
+4-5<br>🎬 Titanic Re-watch
+</div>
+
+<div class="date">6</div>
+<div class="date">7</div>
+
+<div class="date">8</div>
+<div class="date">9</div>
+
+<div class="date span3">
+10-12<br>🌈 Inside Out Movie Week
+</div>
+
+<div class="date">13</div>
+<div class="date rest">14<br>Rest</div>
+
+<div class="date">15</div>
+<div class="date">16</div>
+<div class="date">17</div>
+
+<div class="date span2">
+18-19<br>🏝️ Cast Away Night
+</div>
+
+<div class="date">20</div>
+<div class="date">21</div>
+<div class="date rest">22<br>Chill</div>
+
+</div>
+
+</div>
+
+</section>
 
 </body>
 </html>
