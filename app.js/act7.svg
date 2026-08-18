@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="auto" style="max-width: 400px; display: block; margin: auto;">
+  <defs>
+    <!-- Retro Drop Shadows -->
+    <filter id="hard-shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="6" dy="6" stdDeviation="0" flood-color="#1a1a1a" />
+    </filter>
+    <filter id="text-shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="4" dy="4" stdDeviation="0" flood-color="#1a1a1a" />
+    </filter>
+  </defs>
+
+  <!-- OUTER BADGE (Yellow Retro Base) -->
+  <rect x="25" y="25" width="450" height="450" rx="60" fill="#FECA57" stroke="#1A1A1A" stroke-width="8" filter="url(#hard-shadow)" />
+
+  <!-- INNER FRAME (Red Main Theme) -->
+  <rect x="45" y="45" width="410" height="410" rx="45" fill="#FF4757" stroke="#FFFFFF" stroke-width="6" />
+
+  <!-- STORE ROOF / CANOPY STRIPES -->
+  <g transform="translate(0, 10)">
+    <!-- Roof Scallops (White & Dark Red) -->
+    <path d="M 75 120 C 75 140, 115 140, 115 120" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="4" />
+    <path d="M 115 120 C 115 140, 155 140, 155 120" fill="#2D3436" stroke="#1A1A1A" stroke-width="4" />
+    <path d="M 155 120 C 155 140, 195 140, 195 120" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="4" />
+    <path d="M 195 120 C 195 140, 235 140, 235 120" fill="#2D3436" stroke="#1A1A1A" stroke-width="4" />
+    <path d="M 235 120 C 235 140, 275 140, 275 120" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="4" />
+    <path d="M 275 120 C 275 140, 315 140, 315 120" fill="#2D3436" stroke="#1A1A1A" stroke-width="4" />
+    <path d="M 315 120 C 315 140, 355 140, 355 120" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="4" />
+    <path d="M 355 120 C 355 140, 395 140, 395 120" fill="#2D3436" stroke="#1A1A1A" stroke-width="4" />
+    <path d="M 395 120 C 395 140, 425 140, 425 120" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="4" />
+
+    <!-- Main Roof Top -->
+    <path d="M 90 120 L 120 60 L 380 60 L 410 120 Z" fill="#FECA57" stroke="#1A1A1A" stroke-width="6" />
+    
+    <!-- Roof Stripes Overlay -->
+    <path d="M 150 60 L 135 120 M 210 60 L 205 120 M 270 60 L 275 120 M 330 60 L 345 120" stroke="#1A1A1A" stroke-width="5" opacity="0.3" />
+  </g>
+
+  <!-- STORE SIGNBOARD RIBBON (White Badge) -->
+  <g transform="translate(0, -10)">
+    <rect x="90" y="180" width="320" height="48" rx="14" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="5" filter="url(#hard-shadow)" />
+    <text x="250" y="212" font-family="'Comic Sans MS', 'Arial Black', sans-serif" font-weight="900" font-size="22" fill="#FF4757" text-anchor="middle" letter-spacing="3">
+      TINDAHAN NI
+    </text>
+  </g>
+
+  <!-- MAIN NAME TEXT: ALING TINAY -->
+  <g transform="translate(0, 10)">
+    <!-- "ALING" (Yellow Font with Black Outline) -->
+    <text x="250" y="295" font-family="'Arial Black', 'Impact', sans-serif" font-weight="900" font-size="52" fill="#FECA57" stroke="#1A1A1A" stroke-width="8" text-anchor="middle" letter-spacing="4" paint-order="stroke fill" filter="url(#text-shadow)">
+      ALING
+    </text>
+
+    <!-- "TINAY" (Big White Font with Black Outline) -->
+    <text x="250" y="375" font-family="'Arial Black', 'Impact', sans-serif" font-weight="900" font-size="76" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="10" text-anchor="middle" letter-spacing="5" paint-order="stroke fill" filter="url(#text-shadow)">
+      TINAY
+    </text>
+  </g>
+
+  <!-- RETRO DECORATIONS (Piso-Candy & Sparkles) -->
+  <!-- Left Star -->
+  <polygon points="85,270 92,288 110,288 96,298 101,315 85,304 69,315 74,298 60,288 78,288" fill="#FECA57" stroke="#1A1A1A" stroke-width="3" />
+  <!-- Right Star -->
+  <polygon points="415,270 422,288 440,288 426,298 431,315 415,304 399,315 404,298 390,288 408,288" fill="#FECA57" stroke="#1A1A1A" stroke-width="3" />
+
+  <!-- Bottom Subtitle (Est. 90s / Batang 90s Tag) -->
+  <rect x="150" y="415" width="200" height="28" rx="8" fill="#1A1A1A" />
+  <text x="250" y="434" font-family="'Comic Sans MS', sans-serif" font-weight="bold" font-size="13" fill="#FECA57" text-anchor="middle" letter-spacing="2">
+    EST. BATANG 90S 🍭
+  </text>
+</svg>

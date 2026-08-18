@@ -1,566 +1,1043 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pan-Pan's Cute IT Blog | We Bare Bears</title>
-  <style>
-    /* RESET & PANDA THEME */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Comic Sans MS', 'Chalkboard SE', 'Segoe UI', sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Activity 7 - Ako si Berto</title>
 
-    body {
-      background-color: #121212;
-      color: #e2e8f0;
-      line-height: 1.6;
-    }
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
 
-    a { text-decoration: none; color: inherit; }
+body {
+    background: #f4f1ea;
+    color: #333;
+    line-height: 1.6;
+}
 
-    /* 1. PORTAL LANDING SCREEN */
-    #portal-landing {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      z-index: 9999;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
-    }
+/* HEADER */
+header {
+    background: #8b0000;
+    color: white;
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
 
-    .portal-box {
-      background: rgba(255, 255, 255, 0.95);
-      color: #1e1e1e;
-      padding: 40px 30px;
-      border-radius: 28px;
-      border: 4px solid #000000;
-      box-shadow: 0 12px 35px rgba(0,0,0,0.6);
-      max-width: 450px;
-      width: 100%;
-    }
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
-    .panda-avatar {
-      font-size: 4rem;
-      animation: bounce 2s infinite;
-      display: inline-block;
-    }
+.logo img {
+    width: 38px;
+    height: 38px;
+}
 
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
+.logo h1 {
+    color: #ffd700;
+    font-size: 1.2rem;
+}
 
-    .portal-title {
-      font-size: 2rem;
-      color: #000000;
-      margin: 10px 0 5px;
-    }
+nav {
+    display: flex;
+    gap: 5px;
+}
 
-    .portal-subtitle {
-      font-size: 0.95rem;
-      color: #555555;
-      margin-bottom: 20px;
-    }
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    cursor: pointer;
+}
 
-    .btn-cute {
-      background-color: #000000;
-      color: #ffffff;
-      padding: 12px 30px;
-      font-size: 1rem;
-      font-weight: bold;
-      border: 2px solid #000;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: all 0.2s ease-in-out;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
+nav a:hover,
+nav a.active {
+    background: #ffd700;
+    color: #8b0000;
+    border-radius: 20px;
+}
 
-    .btn-cute:hover {
-      background-color: #ffffff;
-      color: #000000;
-      transform: scale(1.05);
-    }
+/* SECTIONS */
+.page {
+    display: none;
+}
 
-    /* 2. CUTE PANDA LOADING OVERLAY */
-    #loading-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background-color: #121212;
-      z-index: 10000;
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: #ffffff;
-    }
+.page.active {
+    display: block;
+}
 
-    .loader-card {
-      background: #1a1a1a;
-      border: 3px solid #333333;
-      padding: 35px;
-      border-radius: 24px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-      max-width: 350px;
-      width: 90%;
-    }
+/* HERO */
+.hero {
+    background:
+        linear-gradient(#8b0000cc, #3c0000cc),
+        url("https://i.pinimg.com/736x/15/42/70/1542702ca498457bbad82a5fa7abbc48.jpg")
+        center/cover;
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
 
-    .loader-img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid #ffffff;
-      margin-bottom: 15px;
-      animation: pulse 1.5s infinite ease-in-out;
-    }
+.hero h2 {
+    color: #ffd700;
+    font-size: 2.5rem;
+}
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.08); }
-    }
+.container {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
 
-    .spinner {
-      width: 45px;
-      height: 45px;
-      border: 5px solid #333333;
-      border-top: 5px solid #ffffff;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin: 15px auto;
-    }
+/* BLOG */
+.content {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+}
 
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
+.blog-meta {
+    color: #777;
+    margin: 10px 0 20px;
+}
 
-    .loader-text {
-      font-size: 1.1rem;
-      font-weight: bold;
-      color: #ffffff;
-      letter-spacing: 1px;
-    }
+.featured-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
 
-    /* MAIN WEBSITE CONTAINER */
-    #main-website {
-      display: none;
-    }
+.blog p {
+    margin: 15px 0;
+    text-align: justify;
+}
 
-    /* HEADER & NAVIGATION (FLEXBOX) */
+/* CARDS */
+.section-title {
+    color: #8b0000;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #8b0000;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 15px;
+}
+
+.card {
+    background: #faf6f0;
+    border: 1px solid #e8decb;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.card h3 {
+    color: #8b0000;
+    margin-top: 5px;
+}
+
+/* BERTO FORM */
+.form-box {
+    max-width: 600px;
+    margin: 30px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    border-top: 5px solid #8b0000;
+}
+
+.form-box h2 {
+    color: #8b0000;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-box input,
+.form-box textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 6px 0 12px;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+}
+
+.form-box input:hover,
+.form-box textarea:hover,
+.form-box input:focus,
+.form-box textarea:focus {
+    border-color: #8b0000;
+    outline: none;
+}
+
+.form-box button,
+.footer-form button {
+    width: 100%;
+    padding: 12px;
+    background: #8b0000;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.form-box button:hover,
+.footer-form button:hover {
+    background: #ffd700;
+    color: #8b0000;
+}
+
+/* TINDAHAN + SIDEBAR */
+.store-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 25px;
+}
+
+.store,
+aside {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.store h2,
+aside h2 {
+    color: #8b0000;
+    margin-bottom: 15px;
+}
+
+.store p {
+    margin-bottom: 18px;
+    text-align: justify;
+}
+
+aside {
+    border-top: 5px solid #8b0000;
+    height: fit-content;
+}
+
+aside ul {
+    list-style: none;
+}
+
+aside li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* TINDAHAN FOOTER */
+footer {
+    background: #1a1a1a;
+    color: white;
+    padding: 40px 20px;
+    margin-top: 30px;
+}
+
+footer h2 {
+    color: #ffd700;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.footer-form {
+    max-width: 600px;
+    margin: auto;
+}
+
+.footer-form input,
+.footer-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 6px 0 12px;
+    border-radius: 6px;
+    border: 1px solid #555;
+    background: #292929;
+    color: white;
+}
+
+.footer-form input:hover,
+.footer-form textarea:hover,
+.footer-form input:focus,
+.footer-form textarea:focus {
+    border-color: #ffd700;
+    outline: none;
+}
+
+/* MESSAGE */
+.message {
+    text-align: center;
+    margin-top: 15px;
+    color: #d7bf1f;
+    font-weight: bold;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+
     header {
-      background-color: #1a1a1a;
-      border-bottom: 2px solid #333333;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 30px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+        flex-direction: column;
+        gap: 10px;
     }
 
-    .logo {
-      font-size: 1.4rem;
-      font-weight: bold;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    .store-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+
+    aside {
+        display: none;
     }
 
     nav {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
-    nav a {
-      color: #cccccc;
-      font-size: 0.9rem;
-      font-weight: bold;
-      padding: 8px 14px;
-      border-radius: 20px;
-      transition: 0.2s;
+    .hero h2 {
+        font-size: 1.8rem;
     }
-
-    nav a:hover, nav a.active {
-      color: #000000;
-      background-color: #ffffff;
-    }
-
-    /* MULTI-SECTION APP SWITCHER */
-    .app-section {
-      display: none;
-      padding: 30px 20px;
-      min-height: 75vh;
-    }
-
-    .app-section.active-section {
-      display: block;
-    }
-
-    /* HERO BANNER */
-    .hero-home {
-      border-radius: 24px;
-      padding: 50px 20px;
-      text-align: center;
-      max-width: 1100px;
-      margin: 0 auto 30px auto;
-      border: 3px solid #333333;
-    }
-
-    .hero-card {
-      background: rgba(0, 0, 0, 0.75);
-      display: inline-block;
-      padding: 25px;
-      border-radius: 20px;
-      border: 1px solid #444444;
-    }
-
-    .hero-home h1 {
-      font-size: 1.8rem;
-      color: #ffffff;
-      margin-bottom: 10px;
-    }
-
-    .hero-home p {
-      color: #cccccc;
-      max-width: 550px;
-      margin: 0 auto;
-    }
-
-    /* MAIN LAYOUT (CSS GRID WITH SIDEBAR) */
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 2.5fr 1fr;
-      gap: 25px;
-    }
-
-    .main-content {
-      background-color: #1a1a1a;
-      padding: 25px;
-      border-radius: 20px;
-      border: 2px solid #333333;
-    }
-
-    .blog-img {
-      width: 100%;
-      height: 230px;
-      object-fit: cover;
-      border-radius: 16px;
-      margin: 15px 0;
-      border: 2px solid #333;
-    }
-
-    /* SIDEBAR STYLES */
-    .sidebar {
-      background-color: #1a1a1a;
-      padding: 20px;
-      border-radius: 20px;
-      border: 2px solid #333333;
-      height: fit-content;
-    }
-
-    .widget {
-      margin-bottom: 20px;
-    }
-
-    .widget h3 {
-      color: #ffffff;
-      font-size: 1rem;
-      border-bottom: 2px dashed #444444;
-      padding-bottom: 8px;
-      margin-bottom: 12px;
-    }
-
-    .widget ul { list-style: none; }
-    .widget li { margin-bottom: 8px; }
-
-    .widget a {
-      color: #aaaaaa;
-      font-size: 0.9rem;
-      transition: 0.2s;
-    }
-
-    .widget a:hover { color: #ffffff; padding-left: 5px; }
-
-    /* CARDS GRID FOR INTERESTS & HOBBIES */
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .card {
-      background: #1a1a1a;
-      padding: 22px;
-      border-radius: 20px;
-      border: 2px solid #333333;
-      transition: transform 0.2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: #ffffff;
-    }
-
-    .card h3 { color: #ffffff; margin-bottom: 10px; font-size: 1.1rem; }
-    .card p { color: #bbbbbb; font-size: 0.9rem; }
-
-    /* FOOTER & FORM */
-    footer {
-      background-color: #161616;
-      border-top: 2px solid #333333;
-      margin-top: 50px;
-      padding: 40px 20px;
-    }
-
-    .footer-form {
-      max-width: 420px;
-      margin: 0 auto;
-      text-align: center;
-      background: #222222;
-      padding: 30px;
-      border-radius: 24px;
-      border: 2px solid #333;
-    }
-
-    .footer-form h3 { color: #ffffff; margin-bottom: 5px; }
-    .footer-form p { color: #aaaaaa; font-size: 0.85rem; margin-bottom: 20px; }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 12px;
-      background-color: #121212;
-      border: 2px solid #333333;
-      border-radius: 12px;
-      color: #ffffff;
-      font-size: 0.9rem;
-    }
-
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: #ffffff;
-      background-color: #1a1a1a;
-    }
-
-    /* RESPONSIVE MEDIA QUERIES */
-    @media (max-width: 800px) {
-      .container { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 600px) {
-      .sidebar { display: none; }
-      header { flex-direction: column; gap: 12px; }
-    }
-  </style>
+}
+</style>
 </head>
+
 <body>
 
-  <!-- 1. FRONT PORTAL SCREEN -->
-  <div id="portal-landing" style="background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)), url('https://i.pinimg.com/736x/ae/ef/60/aeef600054e456084eb7c931a5970cd8.jpg') center/cover no-repeat;">
-    <div class="portal-box">
-      <div class="panda-avatar">🐼</div>
-      <h1 class="portal-title">PAN-PAN'S BLOG</h1>
-      <p class="portal-subtitle">Welcome to my personal tech & IT blog page! ✨</p>
-      <button class="btn-cute" onclick="triggerLoading()">ENTER BLOG 🐾</button>
+<!-- HEADER -->
+<header>
+
+    <div class="logo">
+
+        <img src="act7.svg" alt="Logo">
+
+        <h1>Tindahan ni Aling Tinay</h1>
+
     </div>
-  </div>
 
-  <!-- 2. ANIMATED LOADING OVERLAY (LINKED TO YOUR PINTEREST INSPIRATION) -->
-  <div id="loading-overlay">
-    <div class="loader-card">
-      <img src="https://i.pinimg.com/736x/96/18/57/96185746df757f6a7d2713eed184be5e.jpg" alt="Panda Loading" class="loader-img">
-      <div class="spinner"></div>
-      <div class="loader-text">LOADING PAN-PAN'S WORLD... 🐼</div>
+    <nav>
+
+        <a class="active"
+           onclick="showPage('berto', this)">
+            Ako si Berto
+        </a>
+
+        <a onclick="showPage('laruan', this)">
+            Laruang '90s
+        </a>
+
+        <a onclick="showPage('palabas', this)">
+            Palabas '90s
+        </a>
+
+        <a onclick="showPage('laro', this)">
+            Larong '90s
+        </a>
+
+        <a onclick="showPage('tindahan', this)">
+            Tindahan ni Aling Tinay
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- =========================
+     1. AKO SI BERTO
+========================= -->
+
+<section id="berto" class="page active">
+
+    <div class="hero">
+
+        <h2>aKo sI bErtO</h2>
+
+        <p>
+            Isang Pagbabalik-Tanaw sa Masayang Dekada '90
+        </p>
+
     </div>
-  </div>
 
-  <!-- 3. MAIN WEBSITE CONTAINER -->
-  <div id="main-website">
-    
-    <header>
-      <div class="logo">🐼 PAN-PAN</div>
-      <nav>
-        <a href="#" class="nav-link active" onclick="showSection('home-section', this)">🏠 HOME</a>
-        <a href="#" class="nav-link" onclick="showSection('interests-section', this)">💡 INTERESTS</a>
-        <a href="#" class="nav-link" onclick="showSection('hobbies-section', this)">🎨 HOBBIES</a>
-        <a href="#" class="nav-link" onclick="showSection('blog-section', this)">📝 BLOG</a>
-      </nav>
-    </header>
 
-    <!-- HOME SECTION WITH 2-COLUMN GRID (MAIN CONTENT + SIDEBAR) -->
-    <section id="home-section" class="app-section active-section">
-      <div class="hero-home" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;">
-        <div class="hero-card">
-          <h1>WELCOME TO MY DIGITAL WORLD! 🐼</h1>
-          <p>Hi! I'm Panda (Pan-Pan). I love smartphones, coding, anime, and living with my bear brothers Grizz & Ice Bear!</p>
-        </div>
-      </div>
-      
-      <div class="container">
-        <!-- MAIN BOX -->
-        <main class="main-content">
-          <h2>🐼 About Pan-Pan</h2>
-          <p>Welcome to my home tab! I am currently taking up Information Technology. I spend most of my time tweaking my phone parameters, browsing anime, and writing clean HTML code.</p>
-          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" alt="Panda Workstation" class="blog-img">
-          <p>Feel free to explore my interests, hobbies, and blog entries using the navigation menu above!</p>
+    <div class="container">
+
+        <main class="content blog">
+
+            <h2>
+                Ang Buhay sa Kanto noong Dekada '90
+            </h2>
+
+            <div class="blog-meta">
+
+                Isinulat ni <b>Christine Mae Fabula</b> |
+                Inilathala noong <b>Agosto 18, 2026</b>
+
+            </div>
+
+
+            <img
+                src="https://i.pinimg.com/736x/15/42/70/1542702ca498457bbad82a5fa7abbc48.jpg"
+                alt="Batang 90s"
+                class="featured-img"
+            >
+
+
+            <div class="blog">
+
+                <p>
+                    Aba, hoy! Berto pala rito. Tatlong taong gulang pa lang
+                    yata ako noong dekada '90, pero kung makipag-Patintero
+                    at Tumbang Preso sa kanto, akala mo pambansang atleta na.
+                    Amoy alikabok, pawis, at pinaghalong lasa ng kulangot at
+                    Pico-Pico ang buong hapon namin.
+                </p>
+
+
+                <p>
+                    Walang iPad o Wi-Fi noon; ang tunay na saya ay naroon
+                    sa ingay ng mga tsinelas at hiyawan ng mga bata sa kanto.
+                    Ang pinaka-extreme sport pa nga tuwing palubog na ang araw
+                    ay ang marathon pauwi dahil hinahabol na ako ni Nanay
+                    na may hawak na walis tingting!
+                </p>
+
+
+                <p>
+                    At siyempre, naroon ang Tindahan ni Aling Tinay na katabi
+                    lang ng bahay namin. Dito nanggaling ang lahat ng tsismis
+                    sa kanto, palamig sa plastic, at ang walang katapusang
+                    listahan ng utang ni Tatay.
+                </p>
+
+            </div>
+
         </main>
 
-        <!-- SIDEBAR BOX (GIGAPACKED FOR HOME) -->
-        <aside class="sidebar">
-          <div class="widget">
-            <h3>📌 Quick Highlights</h3>
-            <ul>
-              <li><a href="#">• IT Student Journey</a></li>
-              <li><a href="#">• Favorite Anime List</a></li>
-              <li><a href="#">• My Phone Setup</a></li>
-            </ul>
-          </div>
-          <div class="widget">
-            <h3>🐻 Bear Family</h3>
-            <ul>
-              <li><a href="#">• Grizzly Bear</a></li>
-              <li><a href="#">• Ice Bear</a></li>
-            </ul>
-          </div>
-        </aside>
-      </div>
-    </section>
 
-    <!-- INTERESTS SECTION -->
-    <section id="interests-section" class="app-section">
-      <h2 style="text-align: center; margin-bottom: 25px; color: #ffffff;">💡 MY TECH INTERESTS</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>📱 Smart Gadgets & Apps</h3>
-          <p>Exploring new photo filter apps, mobile accessories, and staying connected on social media.</p>
-        </div>
-        <div class="card">
-          <h3>🎌 Anime & Manga</h3>
-          <p>Huge fan of Japanese culture, collecting anime figures, and watching new series on weekends!</p>
-        </div>
-        <div class="card">
-          <h3>🌐 Web Development</h3>
-          <p>Studying front-end web design, Flexbox navigation bars, and responsive CSS Grid styles.</p>
-        </div>
-      </div>
-    </section>
+        <!-- BERTO FEEDBACK FORM -->
 
-    <!-- HOBBIES SECTION -->
-    <section id="hobbies-section" class="app-section">
-      <h2 style="text-align: center; margin-bottom: 25px; color: #ffffff;">🎨 MY FAVORITE HOBBIES</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>📸 Photography & Selfies</h3>
-          <p>Taking aesthetic photos with my phone camera and tweaking filter settings for my posts.</p>
-        </div>
-        <div class="card">
-          <h3>✍️ Blogging & Writing</h3>
-          <p>Documenting my daily experiences, IT student progress, and tech reviews for my followers.</p>
-        </div>
-        <div class="card">
-          <h3>🎨 Digital UI Design</h3>
-          <p>Drafting clean user interface designs and cute color themes for personal projects.</p>
-        </div>
-      </div>
-    </section>
+        <form class="form-box" onsubmit="sendFeedback(event)">
 
-    <!-- BLOG SECTION -->
-    <section id="blog-section" class="app-section">
-      <div class="container">
-        <main class="main-content">
-          <h2>My Journey as an IT Student 🐾</h2>
-          <p style="color: #a1a1aa; font-size: 0.85rem; margin-bottom: 15px;">August 18, 2026 | Written by Pan-Pan</p>
-          <p>Hey everyone! Panda here! Most people know me as the bear who is always attached to his phone screen, but recently I've turned my interest in gadgets into studying Information Technology and Web Development!</p>
-        </main>
+            <h2>
+                Batang 90's Ka Din Ba?
+            </h2>
 
-        <aside class="sidebar">
-          <div class="widget">
-            <h3>📌 Recent Posts</h3>
-            <ul>
-              <li><a href="#">• CSS Grid Tutorial</a></li>
-              <li><a href="#">• Flexbox Guide</a></li>
-            </ul>
-          </div>
-        </aside>
-      </div>
-    </section>
 
-    <!-- FOOTER QUESTION FORM -->
-    <footer id="contact">
-      <div class="footer-form">
-        <h3>💬 ASK PAN-PAN A QUESTION</h3>
-        <p>Leave a message or question below for Pan-Pan!</p>
-        <form onsubmit="alert('Aww, thank you! Panda received your message! 🐾'); return false;">
-          <input type="text" placeholder="Your Name" required>
-          <input type="email" placeholder="Your Email Address" required>
-          <textarea rows="3" placeholder="Write your question or comment here..." required></textarea>
-          <button type="submit" class="btn-cute">SEND MESSAGE 🐾</button>
+            <label>Pangalan:</label>
+
+            <input
+                type="text"
+                required
+            >
+
+
+            <label>Edad:</label>
+
+            <input
+                type="number"
+                required
+            >
+
+
+            <label>Ano ang iyong kwento?</label>
+
+            <textarea
+                rows="5"
+                required
+            ></textarea>
+
+
+            <button type="submit">
+                Ipadala
+            </button>
+
+            <p id="feedbackMessage" class="message"></p>
+
         </form>
-      </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     2. LARUANG 90s
+========================= -->
+
+<section id="laruan" class="page">
+
+    <div class="hero">
+
+        <h2>Laruang '90s</h2>
+
+        <p>
+            Mga laruang higit pa sa gadget. Dito ako unang natutong sumugal sa buhay
+        </p>
+
+    </div>
+
+
+    <div class="container content">
+
+        <h2 class="section-title">
+            Mga Paboritong Laruan
+        </h2>
+
+
+        <div class="cards">
+
+            <div class="card">
+
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZbDq_MtVr8y95htxXFOZTyIXf130mv9NnHMiu_u3eqg&s=10"
+                    alt="Teks"
+                >
+
+                <h3>Teks</h3>
+
+                <p>
+                    Mini anime cards.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <img
+                    src="https://i.pinimg.com/736x/03/54/a0/0354a02c9b7dda75a42f2c9d65231bb2.jpg"
+                    alt="Pogs"
+                >
+
+                <h3>Pogs</h3>
+
+                <p>
+                    Mababakas na karton.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjBM9TZ4qCDdKnP4KcLpRMgEythv_6Efv8vdhRNXQX8Q&s=10"
+                    alt="Jolens"
+                >
+
+                <h3>Jolens</h3>
+
+                <p>
+                    Salaming bola.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <img
+                    src="https://down-ph.img.susercontent.com/file/ph-11134207-7r992-lxg3mawhuh5tb4"
+                    alt="Lastiko"
+                >
+
+                <h3>Lastiko</h3>
+
+                <p>
+                    Pambato sa kanto.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <img
+                    src="https://villagepipol.com/wp-content/uploads/2022/08/Trumpo-Top-Hannah-Alcuezar.jpg"
+                    alt="Trumpo"
+                >
+
+                <h3>Trumpo</h3>
+
+                <p>
+                    Kawayang laruan.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     3. PALABAS 90s
+========================= -->
+
+<section id="palabas" class="page">
+
+    <div class="hero">
+
+        <h2>Palabas '90s</h2>
+
+        <p>
+            Mga palabas na inaabangan ko pagkatapos ng klase
+            <i>
+                Madalas sa kapitbahay naming may television kami
+                nakikipanood tuwing hapon.
+            </i>
+        </p>
+
+    </div>
+
+
+    <div class="container content">
+
+        <h2 class="section-title">
+            Mga Sikat na Palabas
+        </h2>
+
+
+        <div class="cards">
+
+            <div class="card">
+
+                <img
+                    src="https://i.pinimg.com/736x/cf/0f/d0/cf0fd03d827e61733eec8e66652e7fb4.jpg"
+                    alt="Ghost Fighter"
+                >
+
+                <h3>Ghost Fighter</h3>
+
+                <p>
+                    Ray Gun ni Eugene.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <img
+                    src="https://i.pinimg.com/736x/a6/e9/b7/a6e9b7d379d271d2b49811ac3a18fc4d.jpg"
+                    alt="Slam Dunk"
+                >
+
+                <h3>Slam Dunk</h3>
+
+                <p>
+                    Sakuragi Shohoku.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <img
+                    src="https://i.pinimg.com/736x/25/6f/44/256f445fec4f2cbb357af1f9c8ee91a7.jpg"
+                    alt="Dragon Ball Z"
+                >
+
+                <h3>Dragon Ball Z</h3>
+
+                <p>
+                    Super Saiyan Goku.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <img
+                    src="https://i.pinimg.com/736x/3d/ca/be/3dcabef629629ddf8b994df074fdf750.jpg"
+                    alt="Ang TV"
+                >
+
+                <h3>Ang TV</h3>
+
+                <p>
+                    4:30 na show.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <img
+                    src="https://i.pinimg.com/736x/d5/3b/eb/d53beb2d3ac6b78d74c6712fab720f34.jpg"
+                    alt="Hiraya Manawari"
+                >
+
+                <h3>Hiraya Manawari</h3>
+
+                <p>
+                    Mga aral sa buhay.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     4. LARONG 90s
+========================= -->
+
+<section id="laro" class="page">
+
+    <div class="hero">
+
+        <h2>Larong '90s</h2>
+
+        <p>
+            Mga larong nagpatibay sa aking pagkatao
+        </p>
+
+    </div>
+
+
+    <div class="container content">
+
+        <h2 class="section-title">
+            Mga Larong Kanto
+        </h2>
+
+
+        <div class="cards">
+
+            <div class="card">
+
+                <img
+                    src="https://i.pinimg.com/1200x/8d/ee/52/8dee525e3427d117c14356eda70f7f73.jpg"
+                    alt="Kutse-kotsehan"
+                >
+
+                <h3>Kutse-kotsehan</h3>
+
+                <p>
+                    'yong hihilahin ng kalaro mo 'yong palapa ng niyog
+                    na kunwari ay kotse. Minsan sumasayad ang pwet ko
+                    sa lupa kaya nabubutas 'yong shorts ko. Tanda ko pa
+                    'yong gigil sa kurot ni Mama kapag nakikita niyang
+                    nabutas 'yong short ko haha.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <img
+                    src="https://i.pinimg.com/736x/94/73/4d/94734d98e6e0c810156b0aaa5f8673c7.jpg"
+                    alt="Tumbang Preso"
+                >
+
+                <h3>Tumbang Preso</h3>
+
+                <p>
+                    Ito ang paborito ko sa lahat. Ang mechanics, sa inyong
+                    magkakalaro, ang hindi makakapagpatayo ng lata siya
+                    ang taya. Tapos babantayan niya 'yong lata na hindi
+                    matumba tapos tatayain 'yong mga kukuha ng tsinelas.
+                    Kaya kailangan talaga dito mabilis ang paa at maliksi ka.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <img
+                    src="https://i.pinimg.com/736x/ac/73/a3/ac73a3d0f365c6396fa9b1d1830f68b0.jpg"
+                    alt="Gagambang Bahay"
+                >
+
+                <h3>Gagambang-Bahay</h3>
+
+                <p>
+                    Dito ako unang natuto paano maghanap sa gitna ng
+                    walang kasiguraduhan. Dedma sa aswang, hatinggabi
+                    kami naghahanap ng gagamba sa gubat para tulog
+                    at madaling hulihin.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <img
+                    src="https://i.pinimg.com/1200x/37/36/15/3736157e434502c1cfe1530e21d3f3a8.jpg"
+                    alt="Kadang-Kadang"
+                >
+
+                <h3>Kadang-Kadang</h3>
+
+                <p>
+                    Ito 'yong exciting. Kapag gamay mo na 'yong mababa,
+                    magle-level up ka na ng taas. Minsan nahuhulog pa ako
+                    noon. Tapos nagkakarera kami sa putikan.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <img
+                    src="https://i.pinimg.com/736x/5d/92/30/5d923093e51a465659eb3686d200160b.jpg"
+                    alt="Luksong-Tinik"
+                >
+
+                <h3>Luksong-Tinik</h3>
+
+                <p>
+                    Ito 'yong nagsisimula sa pinakamababa hanggang sa
+                    magpatong-patong na 'yong mga kamay ng kalaro mo.
+                    'Yong automatic taya ka na kapag sumayad sa balat
+                    mo 'yong dulo ng daliri.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     5. TINDAHAN NI ALING TINAY
+========================= -->
+
+<section id="tindahan" class="page">
+
+    <div class="hero">
+
+        <h2>Tindahan ni Aling Tinay</h2>
+
+        <p>
+            Dito nagsimula ang kwento ng mga pautang sa kanto.
+        </p>
+
+    </div>
+
+
+    <div class="container store-layout">
+
+        <!-- STORE CONTENT -->
+
+        <main class="store">
+
+            <h2>
+                Ang Tindahan ni Aling Tinay
+            </h2>
+
+
+            <p>
+                Kapag sinabing Tindahan ni Aling Tinay, hindi lang basta
+                sari-sari store ang pumapasok sa isip ko. Maliit lang ito,
+                pero halos buong kanto ay doon nagtitipon. May lumang
+                kahoy na counter sa harap, ilang upuang plastik sa gilid,
+                at mga panindang nakasabit sa dingding.
+            </p>
+
+
+            <p>
+                Marami ring paninda sa kanyang tindahan. May kendi,
+                tsitsirya, ice candy, softdrinks, teks, posporo at kung
+                anu-ano pang maliliit na bagay na kailangan namin noon.
+                Dito kami bumibili pagkatapos maglaro sa kanto, lalo na
+                kapag nauuhaw at pagod na.
+            </p>
+
+
+            <p>
+                Pero higit sa lahat, dito rin nakatala ang mga utang
+                ng buong kanto. Kapag wala kang pambayad, sasabihin lang
+                ni Aling Tinay, "Bayaran mo ha, sa susunod na sweldo!"
+                Kaya minsan, mas nakakatakot pa ang tingin niya kaysa
+                sa sermon ni Nanay.
+            </p>
+
+        </main>
+
+
+        <!-- SIDEBAR -->
+
+        <aside>
+
+            <h2>
+                📋 Lista ng Pautang
+            </h2>
+
+
+            <ul>
+
+                <li>
+                    <b>Ramon:</b> Yosi Hope
+                </li>
+
+                <li>
+                    <b>Lala:</b> Softdrinks
+                </li>
+
+                <li>
+                    <b>Berto:</b> Teks & Ice Candy
+                </li>
+
+                <li>
+                    <b>Dodong:</b> Posporo
+                </li>
+
+                <li>
+                    <b>Mila:</b> Chippy at Juice
+                </li>
+
+            </ul>
+
+        </aside>
+
+    </div>
+
+
+    <!-- ONLY FOR TINDAHAN -->
+
+    <footer>
+
+        <h2>
+            Papalista ka ba?
+        </h2>
+
+
+        <form class="footer-form" onsubmit="addDebt(event)">
+
+            <label>
+                Pangalan:
+            </label>
+
+            <input
+                type="text"
+                required
+                placeholder="Iyong pangalan"
+            >
+
+
+            <label>
+                Kailan babayaran:
+            </label>
+
+            <input
+                type="date"
+                required
+            >
+
+
+            <label>
+                Lista ng uutangin:
+            </label>
+
+            <textarea
+                rows="5"
+                required
+                placeholder="Halimbawa: Ice candy, softdrinks, teks..."
+            ></textarea>
+
+
+            <button type="submit">
+                Ipalista
+            </button>
+
+            <p id="debtMessage" class="message"></p>
+
+        </form>
+
     </footer>
 
-  </div>
+</section>
 
-  <!-- JAVASCRIPT FOR LOADING & SWITCHING -->
-  <script>
-    function triggerLoading() {
-      // Hide portal screen
-      document.getElementById('portal-landing').style.display = 'none';
-      
-      // Show cute Panda loading overlay
-      const loader = document.getElementById('loading-overlay');
-      loader.style.display = 'flex';
 
-      // 2 seconds delay before loading the main site
-      setTimeout(function() {
-        loader.style.display = 'none';
-        document.getElementById('main-website').style.display = 'block';
-        window.scrollTo(0, 0);
-      }, 2000);
-    }
+<!-- NAVIGATION + FORM SCRIPT -->
 
-    function showSection(sectionId, element) {
-      const sections = document.querySelectorAll('.app-section');
-      sections.forEach(sec => sec.classList.remove('active-section'));
+<script>
 
-      const target = document.getElementById(sectionId);
-      if(target) {
-        target.classList.add('active-section');
-      }
+function showPage(page, link) {
 
-      if(element) {
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => link.classList.remove('active'));
-        element.classList.add('active');
-      }
+    document.querySelectorAll(".page").forEach(function(section) {
+        section.classList.remove("active");
+    });
 
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  </script>
+    document.getElementById(page).classList.add("active");
+
+    document.querySelectorAll("nav a").forEach(function(nav) {
+        nav.classList.remove("active");
+    });
+
+    link.classList.add("active");
+
+    window.scrollTo(0, 0);
+}
+
+
+/* BERTO FORM */
+
+function sendFeedback(event) {
+
+    event.preventDefault();
+
+    document.getElementById("feedbackMessage").textContent =
+        "Naipadala na!";
+
+}
+
+
+/* TINDAHAN FORM */
+
+function addDebt(event) {
+
+    event.preventDefault();
+
+    document.getElementById("debtMessage").textContent =
+        "Nailista na, magbayad ka ha!";
+
+}
+
+</script>
 
 </body>
 </html>
