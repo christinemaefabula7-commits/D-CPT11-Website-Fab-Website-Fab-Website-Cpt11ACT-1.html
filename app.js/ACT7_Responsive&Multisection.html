@@ -3,33 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pan-Pan's Tech & IT Blog | We Bare Bears</title>
+  <title>Pan-Pan's Cute IT Blog | We Bare Bears</title>
   <style>
-    /* RESET & BASE STYLES */
+    /* RESET & PANDA THEME */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Comic Sans MS', 'Chalkboard SE', 'Segoe UI', sans-serif;
     }
 
     body {
-      background-color: #0f172a;
-      color: #f8fafc;
+      background-color: #121212;
+      color: #e2e8f0;
       line-height: 1.6;
     }
 
     a { text-decoration: none; color: inherit; }
 
-    /* 1. FRONT PORTAL LANDING SCREEN */
+    /* 1. PORTAL LANDING SCREEN */
     #portal-landing {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100vh;
-      background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.9)), 
-                  url('https://i.pinimg.com/736x/ae/ef/60/aeef600054e456084eb7c931a5970cd8.jpg') center/cover no-repeat;
       z-index: 9999;
       display: flex;
       justify-content: center;
@@ -39,53 +37,131 @@
     }
 
     .portal-box {
-      background: rgba(30, 41, 59, 0.9);
-      padding: 40px;
-      border-radius: 16px;
-      border: 1px solid #334155;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      max-width: 500px;
+      background: rgba(255, 255, 255, 0.95);
+      color: #1e1e1e;
+      padding: 40px 30px;
+      border-radius: 28px;
+      border: 4px solid #000000;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.6);
+      max-width: 450px;
       width: 100%;
     }
 
+    .panda-avatar {
+      font-size: 4rem;
+      animation: bounce 2s infinite;
+      display: inline-block;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
     .portal-title {
-      font-size: 2.2rem;
-      color: #38bdf8;
-      margin-bottom: 10px;
+      font-size: 2rem;
+      color: #000000;
+      margin: 10px 0 5px;
     }
 
     .portal-subtitle {
-      font-size: 1rem;
-      color: #94a3b8;
-      margin-bottom: 25px;
+      font-size: 0.95rem;
+      color: #555555;
+      margin-bottom: 20px;
     }
 
-    .btn-primary {
-      background-color: #38bdf8;
-      color: #0f172a;
-      padding: 12px 28px;
+    .btn-cute {
+      background-color: #000000;
+      color: #ffffff;
+      padding: 12px 30px;
       font-size: 1rem;
-      font-weight: 700;
-      border: none;
-      border-radius: 20px;
+      font-weight: bold;
+      border: 2px solid #000;
+      border-radius: 25px;
       cursor: pointer;
-      transition: 0.2s;
+      transition: all 0.2s ease-in-out;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
-    .btn-primary:hover {
-      background-color: #0284c7;
+    .btn-cute:hover {
+      background-color: #ffffff;
+      color: #000000;
+      transform: scale(1.05);
+    }
+
+    /* 2. CUTE PANDA LOADING OVERLAY */
+    #loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: #121212;
+      z-index: 10000;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       color: #ffffff;
     }
 
-    /* MAIN WEBSITE (HIDDEN INITIALLY) */
+    .loader-card {
+      background: #1a1a1a;
+      border: 3px solid #333333;
+      padding: 35px;
+      border-radius: 24px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      max-width: 350px;
+      width: 90%;
+    }
+
+    .loader-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #ffffff;
+      margin-bottom: 15px;
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    .spinner {
+      width: 45px;
+      height: 45px;
+      border: 5px solid #333333;
+      border-top: 5px solid #ffffff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 15px auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .loader-text {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #ffffff;
+      letter-spacing: 1px;
+    }
+
+    /* MAIN WEBSITE CONTAINER */
     #main-website {
       display: none;
     }
 
-    /* 2. HEADER & FLEXBOX NAV */
+    /* HEADER & NAVIGATION (FLEXBOX) */
     header {
-      background-color: #1e293b;
-      border-bottom: 1px solid #334155;
+      background-color: #1a1a1a;
+      border-bottom: 2px solid #333333;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -96,31 +172,35 @@
     }
 
     .logo {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: bold;
-      color: #38bdf8;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     nav {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 12px;
     }
 
     nav a {
-      color: #cbd5e1;
-      font-size: 0.95rem;
-      padding: 6px 12px;
-      border-radius: 6px;
+      color: #cccccc;
+      font-size: 0.9rem;
+      font-weight: bold;
+      padding: 8px 14px;
+      border-radius: 20px;
       transition: 0.2s;
     }
 
     nav a:hover, nav a.active {
-      color: #38bdf8;
-      background-color: rgba(56, 189, 248, 0.1);
+      color: #000000;
+      background-color: #ffffff;
     }
 
-    /* MULTI-SECTION APP SCREEN SWITCHER */
+    /* MULTI-SECTION APP SWITCHER */
     .app-section {
       display: none;
       padding: 30px 20px;
@@ -131,86 +211,67 @@
       display: block;
     }
 
-    /* HERO BANNER FOR HOME (WE BARE BEARS BROTHERS BACKGROUND) */
+    /* HERO BANNER */
     .hero-home {
-      background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.85)),
-                  url('https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1200&q=80') center/cover;
-      border-radius: 12px;
-      padding: 60px 20px;
+      border-radius: 24px;
+      padding: 50px 20px;
       text-align: center;
       max-width: 1100px;
       margin: 0 auto 30px auto;
-      border: 1px solid #334155;
+      border: 3px solid #333333;
+    }
+
+    .hero-card {
+      background: rgba(0, 0, 0, 0.75);
+      display: inline-block;
+      padding: 25px;
+      border-radius: 20px;
+      border: 1px solid #444444;
     }
 
     .hero-home h1 {
-      font-size: 2.2rem;
-      color: #f8fafc;
+      font-size: 1.8rem;
+      color: #ffffff;
       margin-bottom: 10px;
     }
 
     .hero-home p {
-      color: #94a3b8;
-      max-width: 600px;
+      color: #cccccc;
+      max-width: 550px;
       margin: 0 auto;
     }
 
-    /* 3. MAIN LAYOUT (CSS GRID) & SIDEBAR */
+    /* MAIN LAYOUT (CSS GRID WITH SIDEBAR) */
     .container {
       max-width: 1100px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 2.5fr 1fr;
-      gap: 30px;
+      gap: 25px;
     }
 
-    .blog-post {
-      background-color: #1e293b;
+    .main-content {
+      background-color: #1a1a1a;
       padding: 25px;
-      border-radius: 8px;
-      border: 1px solid #334155;
-    }
-
-    .blog-post h2 {
-      color: #f8fafc;
-      margin-bottom: 5px;
-    }
-
-    .blog-meta {
-      font-size: 0.85rem;
-      color: #38bdf8;
-      margin-bottom: 15px;
+      border-radius: 20px;
+      border: 2px solid #333333;
     }
 
     .blog-img {
       width: 100%;
-      height: 250px;
+      height: 230px;
       object-fit: cover;
-      border-radius: 6px;
-      margin-bottom: 20px;
-    }
-
-    .blog-post p {
-      margin-bottom: 15px;
-      color: #cbd5e1;
-    }
-
-    .blog-post h3 {
-      color: #f8fafc;
-      margin: 20px 0 10px;
-    }
-
-    .blog-post ul {
-      margin-left: 20px;
-      color: #cbd5e1;
+      border-radius: 16px;
+      margin: 15px 0;
+      border: 2px solid #333;
     }
 
     /* SIDEBAR STYLES */
     .sidebar {
-      background-color: #1e293b;
+      background-color: #1a1a1a;
       padding: 20px;
-      border-radius: 8px;
-      border: 1px solid #334155;
+      border-radius: 20px;
+      border: 2px solid #333333;
       height: fit-content;
     }
 
@@ -219,9 +280,9 @@
     }
 
     .widget h3 {
-      color: #38bdf8;
-      font-size: 1.1rem;
-      border-bottom: 1px solid #334155;
+      color: #ffffff;
+      font-size: 1rem;
+      border-bottom: 2px dashed #444444;
       padding-bottom: 8px;
       margin-bottom: 12px;
     }
@@ -230,55 +291,58 @@
     .widget li { margin-bottom: 8px; }
 
     .widget a {
-      color: #94a3b8;
+      color: #aaaaaa;
       font-size: 0.9rem;
+      transition: 0.2s;
     }
 
-    .widget a:hover { color: #38bdf8; }
+    .widget a:hover { color: #ffffff; padding-left: 5px; }
 
-    /* CONTENT CARDS FOR INTERESTS & HOBBIES */
+    /* CARDS GRID FOR INTERESTS & HOBBIES */
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 20px;
       max-width: 1100px;
       margin: 0 auto;
     }
 
     .card {
-      background: #1e293b;
-      padding: 20px;
-      border-radius: 8px;
-      border: 1px solid #334155;
+      background: #1a1a1a;
+      padding: 22px;
+      border-radius: 20px;
+      border: 2px solid #333333;
+      transition: transform 0.2s ease;
     }
 
-    .card h3 { color: #38bdf8; margin-bottom: 10px; }
-    .card p { color: #cbd5e1; font-size: 0.95rem; }
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #ffffff;
+    }
 
-    /* 4. FOOTER & FEEDBACK / QUESTIONS FORM */
+    .card h3 { color: #ffffff; margin-bottom: 10px; font-size: 1.1rem; }
+    .card p { color: #bbbbbb; font-size: 0.9rem; }
+
+    /* FOOTER & FORM */
     footer {
-      background-color: #1e293b;
-      border-top: 1px solid #334155;
+      background-color: #161616;
+      border-top: 2px solid #333333;
       margin-top: 50px;
       padding: 40px 20px;
     }
 
     .footer-form {
-      max-width: 450px;
+      max-width: 420px;
       margin: 0 auto;
       text-align: center;
+      background: #222222;
+      padding: 30px;
+      border-radius: 24px;
+      border: 2px solid #333;
     }
 
-    .footer-form h3 {
-      color: #f8fafc;
-      margin-bottom: 5px;
-    }
-
-    .footer-form p {
-      color: #94a3b8;
-      font-size: 0.85rem;
-      margin-bottom: 20px;
-    }
+    .footer-form h3 { color: #ffffff; margin-bottom: 5px; }
+    .footer-form p { color: #aaaaaa; font-size: 0.85rem; margin-bottom: 20px; }
 
     form {
       display: flex;
@@ -288,198 +352,206 @@
 
     input, textarea {
       width: 100%;
-      padding: 10px;
-      background-color: #0f172a;
-      border: 1px solid #334155;
-      border-radius: 6px;
-      color: #f8fafc;
+      padding: 12px;
+      background-color: #121212;
+      border: 2px solid #333333;
+      border-radius: 12px;
+      color: #ffffff;
       font-size: 0.9rem;
     }
 
-    /* HOVER & FOCUS STYLES */
     input:focus, textarea:focus {
       outline: none;
-      border-color: #38bdf8;
-      background-color: #1e293b;
+      border-color: #ffffff;
+      background-color: #1a1a1a;
     }
 
-    /* 5. RESPONSIVE DESIGN (MEDIA QUERIES) */
+    /* RESPONSIVE MEDIA QUERIES */
     @media (max-width: 800px) {
-      .container {
-        grid-template-columns: 1fr; /* 2 Columns to 1 Column */
-      }
+      .container { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 600px) {
-      .sidebar {
-        display: none; /* Hide sidebar entirely below 600px */
-      }
-      header {
-        flex-direction: column;
-        gap: 10px;
-      }
+      .sidebar { display: none; }
+      header { flex-direction: column; gap: 12px; }
     }
   </style>
 </head>
 <body>
 
-  <div id="portal-landing">
+  <!-- 1. FRONT PORTAL SCREEN -->
+  <div id="portal-landing" style="background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)), url('https://i.pinimg.com/736x/ae/ef/60/aeef600054e456084eb7c931a5970cd8.jpg') center/cover no-repeat;">
     <div class="portal-box">
+      <div class="panda-avatar">🐼</div>
       <h1 class="portal-title">PAN-PAN'S BLOG</h1>
       <p class="portal-subtitle">Welcome to my personal tech & IT blog page! ✨</p>
-      <button class="btn-primary" onclick="startApp()">GET STARTED</button>
+      <button class="btn-cute" onclick="triggerLoading()">ENTER BLOG 🐾</button>
     </div>
   </div>
 
+  <!-- 2. ANIMATED LOADING OVERLAY (LINKED TO YOUR PINTEREST INSPIRATION) -->
+  <div id="loading-overlay">
+    <div class="loader-card">
+      <img src="https://i.pinimg.com/736x/96/18/57/96185746df757f6a7d2713eed184be5e.jpg" alt="Panda Loading" class="loader-img">
+      <div class="spinner"></div>
+      <div class="loader-text">LOADING PAN-PAN'S WORLD... 🐼</div>
+    </div>
+  </div>
+
+  <!-- 3. MAIN WEBSITE CONTAINER -->
   <div id="main-website">
     
     <header>
       <div class="logo">🐼 PAN-PAN</div>
       <nav>
-        <a href="#" class="nav-link active" onclick="showSection('home-section', this)">HOME</a>
-        <a href="#" class="nav-link" onclick="showSection('interests-section', this)">INTERESTS</a>
-        <a href="#" class="nav-link" onclick="showSection('hobbies-section', this)">HOBBIES</a>
-        <a href="#" class="nav-link" onclick="showSection('blog-section', this)">PERSONAL BLOG</a>
-        <a href="#contact" class="nav-link">CONTACT</a>
-        <a href="#" class="btn-primary" style="padding: 6px 15px;" onclick="showSection('blog-section', document.querySelectorAll('.nav-link')[3])">START</a>
+        <a href="#" class="nav-link active" onclick="showSection('home-section', this)">🏠 HOME</a>
+        <a href="#" class="nav-link" onclick="showSection('interests-section', this)">💡 INTERESTS</a>
+        <a href="#" class="nav-link" onclick="showSection('hobbies-section', this)">🎨 HOBBIES</a>
+        <a href="#" class="nav-link" onclick="showSection('blog-section', this)">📝 BLOG</a>
       </nav>
     </header>
 
+    <!-- HOME SECTION WITH 2-COLUMN GRID (MAIN CONTENT + SIDEBAR) -->
     <section id="home-section" class="app-section active-section">
-      <div class="hero-home">
-        <h1>WELCOME TO MY DIGITAL WORLD! 🐼</h1>
-        <p>Hi! I'm Panda (Pan-Pan). I love technology, gadgets, coding, and living with my bear brothers Grizz and Ice Bear!</p>
+      <div class="hero-home" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;">
+        <div class="hero-card">
+          <h1>WELCOME TO MY DIGITAL WORLD! 🐼</h1>
+          <p>Hi! I'm Panda (Pan-Pan). I love smartphones, coding, anime, and living with my bear brothers Grizz & Ice Bear!</p>
+        </div>
       </div>
       
-      <div class="card-grid">
-        <div class="card">
-          <h3>📱 Gadget Lover</h3>
-          <p>I never leave without my smartphone. Staying connected with my followers is a top priority!</p>
-        </div>
-        <div class="card">
-          <h3>💻 IT & Web Design</h3>
-          <p>Currently learning HTML, CSS layouts, and modern front-end web development techniques.</p>
-        </div>
-        <div class="card">
-          <h3>🐻 Bear Brothers</h3>
-          <p>Living together with Grizz and Ice Bear while making daily memory logs on my blog.</p>
-        </div>
+      <div class="container">
+        <!-- MAIN BOX -->
+        <main class="main-content">
+          <h2>🐼 About Pan-Pan</h2>
+          <p>Welcome to my home tab! I am currently taking up Information Technology. I spend most of my time tweaking my phone parameters, browsing anime, and writing clean HTML code.</p>
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" alt="Panda Workstation" class="blog-img">
+          <p>Feel free to explore my interests, hobbies, and blog entries using the navigation menu above!</p>
+        </main>
+
+        <!-- SIDEBAR BOX (GIGAPACKED FOR HOME) -->
+        <aside class="sidebar">
+          <div class="widget">
+            <h3>📌 Quick Highlights</h3>
+            <ul>
+              <li><a href="#">• IT Student Journey</a></li>
+              <li><a href="#">• Favorite Anime List</a></li>
+              <li><a href="#">• My Phone Setup</a></li>
+            </ul>
+          </div>
+          <div class="widget">
+            <h3>🐻 Bear Family</h3>
+            <ul>
+              <li><a href="#">• Grizzly Bear</a></li>
+              <li><a href="#">• Ice Bear</a></li>
+            </ul>
+          </div>
+        </aside>
       </div>
     </section>
 
+    <!-- INTERESTS SECTION -->
     <section id="interests-section" class="app-section">
-      <h2 style="text-align: center; margin-bottom: 20px; color: #38bdf8;">MY TECH INTERESTS</h2>
+      <h2 style="text-align: center; margin-bottom: 25px; color: #ffffff;">💡 MY TECH INTERESTS</h2>
       <div class="card-grid">
         <div class="card">
-          <h3>Tech & Smartphones</h3>
-          <p>Obsessed with the latest mobile apps, phone upgrades, and social media tools.</p>
+          <h3>📱 Smart Gadgets & Apps</h3>
+          <p>Exploring new photo filter apps, mobile accessories, and staying connected on social media.</p>
         </div>
         <div class="card">
-          <h3>Anime & Pop Culture</h3>
-          <p>Huge fan of anime shows, manga collecting, and attending fan conventions with my phone camera ready!</p>
+          <h3>🎌 Anime & Manga</h3>
+          <p>Huge fan of Japanese culture, collecting anime figures, and watching new series on weekends!</p>
         </div>
         <div class="card">
-          <h3>Coding & Web Dev</h3>
-          <p>Learning how to structure web layouts using Flexbox and CSS Grid to build modern sites.</p>
+          <h3>🌐 Web Development</h3>
+          <p>Studying front-end web design, Flexbox navigation bars, and responsive CSS Grid styles.</p>
         </div>
       </div>
     </section>
 
+    <!-- HOBBIES SECTION -->
     <section id="hobbies-section" class="app-section">
-      <h2 style="text-align: center; margin-bottom: 20px; color: #38bdf8;">MY FAVORITE HOBBIES</h2>
+      <h2 style="text-align: center; margin-bottom: 25px; color: #ffffff;">🎨 MY FAVORITE HOBBIES</h2>
       <div class="card-grid">
         <div class="card">
-          <h3>Photography & Selfies</h3>
-          <p>Capturing aesthetically pleasing photos and editing them with cute digital filters.</p>
+          <h3>📸 Photography & Selfies</h3>
+          <p>Taking aesthetic photos with my phone camera and tweaking filter settings for my posts.</p>
         </div>
         <div class="card">
-          <h3>Blogging & Writing</h3>
-          <p>Posting updates about my daily experiences, IT class learnings, and tech tutorials.</p>
+          <h3>✍️ Blogging & Writing</h3>
+          <p>Documenting my daily experiences, IT student progress, and tech reviews for my followers.</p>
         </div>
         <div class="card">
-          <h3>Digital Art & Design</h3>
-          <p>Creating graphics and designing clean UI elements for personal websites.</p>
+          <h3>🎨 Digital UI Design</h3>
+          <p>Drafting clean user interface designs and cute color themes for personal projects.</p>
         </div>
       </div>
     </section>
 
+    <!-- BLOG SECTION -->
     <section id="blog-section" class="app-section">
       <div class="container">
-        
-        <main class="blog-post">
-          <h2>My Journey as an IT Student & Tech Enthusiast</h2>
-          <div class="blog-meta">August 18, 2026 | By Pan-Pan</div>
-          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" alt="Panda's Tech Desk" class="blog-img">
-          
-          <p>Hey everyone! Panda here. Many of you know me as the bear who is always glued to his smartphone, but recently I decided to turn my passion for gadgets into something bigger by studying Information Technology and Web Development!</p>
-          
-          <p>My journey started with learning computer system servicing (CSS NC II), understanding hardware setups, and configuring networks. Eventually, I fell in love with writing HTML structure and styling pages using CSS.</p>
-          
-          <h3>What I've Learned So Far:</h3>
-          <ul>
-            <li>Structuring semantic elements in HTML5</li>
-            <li>Creating clean navigation bars using CSS Flexbox</li>
-            <li>Designing responsive layouts with CSS Grid</li>
-            <li>Building user feedback forms with validation rules</li>
-          </ul>
+        <main class="main-content">
+          <h2>My Journey as an IT Student 🐾</h2>
+          <p style="color: #a1a1aa; font-size: 0.85rem; margin-bottom: 15px;">August 18, 2026 | Written by Pan-Pan</p>
+          <p>Hey everyone! Panda here! Most people know me as the bear who is always attached to his phone screen, but recently I've turned my interest in gadgets into studying Information Technology and Web Development!</p>
         </main>
 
         <aside class="sidebar">
           <div class="widget">
-            <h3>Recent Posts</h3>
+            <h3>📌 Recent Posts</h3>
             <ul>
-              <li><a href="#">• My Phone Setup 2026</a></li>
-              <li><a href="#">• Learning CSS Grid</a></li>
-              <li><a href="#">• Grizz, Ice & Me</a></li>
-            </ul>
-          </div>
-          <div class="widget">
-            <h3>Useful Links</h3>
-            <ul>
-              <li><a href="#">• HTML Web Docs</a></li>
-              <li><a href="#">• CSS Flexbox Guide</a></li>
-              <li><a href="#">• My Photo Gallery</a></li>
+              <li><a href="#">• CSS Grid Tutorial</a></li>
+              <li><a href="#">• Flexbox Guide</a></li>
             </ul>
           </div>
         </aside>
-
       </div>
     </section>
 
+    <!-- FOOTER QUESTION FORM -->
     <footer id="contact">
       <div class="footer-form">
-        <h3>ASK PAN-PAN A QUESTION</h3>
-        <p>Have any questions, comments, or feedback? Fill out the form below!</p>
-        <form onsubmit="alert('Thank you! Panda received your question!'); return false;">
+        <h3>💬 ASK PAN-PAN A QUESTION</h3>
+        <p>Leave a message or question below for Pan-Pan!</p>
+        <form onsubmit="alert('Aww, thank you! Panda received your message! 🐾'); return false;">
           <input type="text" placeholder="Your Name" required>
           <input type="email" placeholder="Your Email Address" required>
           <textarea rows="3" placeholder="Write your question or comment here..." required></textarea>
-          <button type="submit" class="btn-primary">SEND MESSAGE</button>
+          <button type="submit" class="btn-cute">SEND MESSAGE 🐾</button>
         </form>
       </div>
     </footer>
 
   </div>
 
+  <!-- JAVASCRIPT FOR LOADING & SWITCHING -->
   <script>
-    function startApp() {
+    function triggerLoading() {
+      // Hide portal screen
       document.getElementById('portal-landing').style.display = 'none';
-      document.getElementById('main-website').style.display = 'block';
-      window.scrollTo(0, 0);
+      
+      // Show cute Panda loading overlay
+      const loader = document.getElementById('loading-overlay');
+      loader.style.display = 'flex';
+
+      // 2 seconds delay before loading the main site
+      setTimeout(function() {
+        loader.style.display = 'none';
+        document.getElementById('main-website').style.display = 'block';
+        window.scrollTo(0, 0);
+      }, 2000);
     }
 
     function showSection(sectionId, element) {
-      // Hide all sections
       const sections = document.querySelectorAll('.app-section');
       sections.forEach(sec => sec.classList.remove('active-section'));
 
-      // Display selected section
       const target = document.getElementById(sectionId);
       if(target) {
         target.classList.add('active-section');
       }
 
-      // Update navbar links active status
       if(element) {
         const navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach(link => link.classList.remove('active'));
