@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Activity 7 - Ako si Berto</title>
+<title>Activity 7:RESPONSIVE and MULTISECTIONED Page</title>
+<link rel="stylesheet" href="act7.css">
 
 <style>
 * {
@@ -35,17 +36,17 @@ header {
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
 }
 
 .logo img {
-    width: 38px;
-    height: 38px;
+    width: 40spx;
+    height: 120px;
 }
 
 .logo h1 {
     color: #ffd700;
-    font-size: 1.2rem;
+    font-size: 1.8rem;
 }
 
 nav {
@@ -327,7 +328,6 @@ footer h2 {
 </head>
 
 <body>
-
 <!-- HEADER -->
 <header>
 
@@ -344,14 +344,6 @@ footer h2 {
         <a class="active"
            onclick="showPage('berto', this)">
             Ako si Berto
-        </a>
-
-        <a onclick="showPage('laruan', this)">
-            Laruang '90s
-        </a>
-
-        <a onclick="showPage('palabas', this)">
-            Palabas '90s
         </a>
 
         <a onclick="showPage('laro', this)">
@@ -426,295 +418,16 @@ footer h2 {
                     na may hawak na walis tingting!
                 </p>
 
-
-                <p>
-                    At siyempre, naroon ang Tindahan ni Aling Tinay na katabi
-                    lang ng bahay namin. Dito nanggaling ang lahat ng tsismis
-                    sa kanto, palamig sa plastic, at ang walang katapusang
-                    listahan ng utang ni Tatay.
-                </p>
-
             </div>
 
         </main>
-
-
-        <!-- BERTO FEEDBACK FORM -->
-
-        <form class="form-box" onsubmit="sendFeedback(event)">
-
-            <h2>
-                Batang 90's Ka Din Ba?
-            </h2>
-
-
-            <label>Pangalan:</label>
-
-            <input
-                type="text"
-                required
-            >
-
-
-            <label>Edad:</label>
-
-            <input
-                type="number"
-                required
-            >
-
-
-            <label>Ano ang iyong kwento?</label>
-
-            <textarea
-                rows="5"
-                required
-            ></textarea>
-
-
-            <button type="submit">
-                Ipadala
-            </button>
-
-            <p id="feedbackMessage" class="message"></p>
-
-        </form>
-
     </div>
 
 </section>
 
 
 <!-- =========================
-     2. LARUANG 90s
-========================= -->
-
-<section id="laruan" class="page">
-
-    <div class="hero">
-
-        <h2>Laruang '90s</h2>
-
-        <p>
-            Mga laruang higit pa sa gadget. Dito ako unang natutong sumugal sa buhay
-        </p>
-
-    </div>
-
-
-    <div class="container content">
-
-        <h2 class="section-title">
-            Mga Paboritong Laruan
-        </h2>
-
-
-        <div class="cards">
-
-            <div class="card">
-
-                <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZbDq_MtVr8y95htxXFOZTyIXf130mv9NnHMiu_u3eqg&s=10"
-                    alt="Teks"
-                >
-
-                <h3>Teks</h3>
-
-                <p>
-                    Mini anime cards.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <img
-                    src="https://i.pinimg.com/736x/03/54/a0/0354a02c9b7dda75a42f2c9d65231bb2.jpg"
-                    alt="Pogs"
-                >
-
-                <h3>Pogs</h3>
-
-                <p>
-                    Mababakas na karton.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjBM9TZ4qCDdKnP4KcLpRMgEythv_6Efv8vdhRNXQX8Q&s=10"
-                    alt="Jolens"
-                >
-
-                <h3>Jolens</h3>
-
-                <p>
-                    Salaming bola.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <img
-                    src="https://down-ph.img.susercontent.com/file/ph-11134207-7r992-lxg3mawhuh5tb4"
-                    alt="Lastiko"
-                >
-
-                <h3>Lastiko</h3>
-
-                <p>
-                    Pambato sa kanto.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <img
-                    src="https://villagepipol.com/wp-content/uploads/2022/08/Trumpo-Top-Hannah-Alcuezar.jpg"
-                    alt="Trumpo"
-                >
-
-                <h3>Trumpo</h3>
-
-                <p>
-                    Kawayang laruan.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     3. PALABAS 90s
-========================= -->
-
-<section id="palabas" class="page">
-
-    <div class="hero">
-
-        <h2>Palabas '90s</h2>
-
-        <p>
-            Mga palabas na inaabangan ko pagkatapos ng klase
-            <i>
-                Madalas sa kapitbahay naming may television kami
-                nakikipanood tuwing hapon.
-            </i>
-        </p>
-
-    </div>
-
-
-    <div class="container content">
-
-        <h2 class="section-title">
-            Mga Sikat na Palabas
-        </h2>
-
-
-        <div class="cards">
-
-            <div class="card">
-
-                <img
-                    src="https://i.pinimg.com/736x/cf/0f/d0/cf0fd03d827e61733eec8e66652e7fb4.jpg"
-                    alt="Ghost Fighter"
-                >
-
-                <h3>Ghost Fighter</h3>
-
-                <p>
-                    Ray Gun ni Eugene.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <img
-                    src="https://i.pinimg.com/736x/a6/e9/b7/a6e9b7d379d271d2b49811ac3a18fc4d.jpg"
-                    alt="Slam Dunk"
-                >
-
-                <h3>Slam Dunk</h3>
-
-                <p>
-                    Sakuragi Shohoku.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <img
-                    src="https://i.pinimg.com/736x/25/6f/44/256f445fec4f2cbb357af1f9c8ee91a7.jpg"
-                    alt="Dragon Ball Z"
-                >
-
-                <h3>Dragon Ball Z</h3>
-
-                <p>
-                    Super Saiyan Goku.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <img
-                    src="https://i.pinimg.com/736x/3d/ca/be/3dcabef629629ddf8b994df074fdf750.jpg"
-                    alt="Ang TV"
-                >
-
-                <h3>Ang TV</h3>
-
-                <p>
-                    4:30 na show.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <img
-                    src="https://i.pinimg.com/736x/d5/3b/eb/d53beb2d3ac6b78d74c6712fab720f34.jpg"
-                    alt="Hiraya Manawari"
-                >
-
-                <h3>Hiraya Manawari</h3>
-
-                <p>
-                    Mga aral sa buhay.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     4. LARONG 90s
+     2. LARONG 90s
 ========================= -->
 
 <section id="laro" class="page">
@@ -842,7 +555,7 @@ footer h2 {
 
 
 <!-- =========================
-     5. TINDAHAN NI ALING TINAY
+     3. TINDAHAN NI ALING TINAY
 ========================= -->
 
 <section id="tindahan" class="page">
@@ -865,7 +578,7 @@ footer h2 {
         <main class="store">
 
             <h2>
-                Ang Tindahan ni Aling Tinay
+                Ang Tindahan ni Aling Tinay.
             </h2>
 
 
@@ -936,7 +649,7 @@ footer h2 {
     </div>
 
 
-    <!-- ONLY FOR TINDAHAN -->
+    <!--    Utang FORM -->
 
     <footer>
 
@@ -1014,16 +727,6 @@ function showPage(page, link) {
 }
 
 
-/* BERTO FORM */
-
-function sendFeedback(event) {
-
-    event.preventDefault();
-
-    document.getElementById("feedbackMessage").textContent =
-        "Naipadala na!";
-
-}
 
 
 /* TINDAHAN FORM */
