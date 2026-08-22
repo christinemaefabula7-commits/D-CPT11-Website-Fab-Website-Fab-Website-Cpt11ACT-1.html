@@ -14,6 +14,12 @@
             rx="12"
             fill="#058b7a"/>
 
+         <!--Store sign-->
+         <rect x="61" y="45"
+            width="300" 
+            height="75"
+            rx="12"
+            fill="black"/>
 
          <!--Store sign-->
          <rect x="59" y="40"
