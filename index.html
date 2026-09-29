@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saga Universe - Activity 1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Logo at the Top -->
+    <header class="logo-header">
+        <div class="logo-container">
+            <span class="logo-candy">🍬</span>
+            <h1>Saga Universe</h1>
+            <span class="logo-candy">🍭</span>
+        </div>
+    </header>
+
+    <main class="main-container">
+        
+        <!-- Main Card with Background Image -->
+        <div id="app-background" class="candy-card">
+            
+            <!-- Initial Input Screen -->
+            <div id="input-area">
+                <h2>Activity 1: JavaScript Fundamentals Challenge</h2>
+                <p>Let us know you!</p>
+                
+                <form id="user-form">
+                    <div class="form-group">
+                        <label for="username">Name:</label>
+                        <input type="text" id="username" placeholder="e.g. Christine" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userage">Age:</label>
+                        <input type="number" id="userage" placeholder="e.g. 18" required min="1" max="120">
+                    </div>
+
+                    <button type="submit" class="candy-btn">Enter Saga 🍬</button>
+                </form>
+            </div>
+
+            <!-- Result Screen (Displays after submitting) -->
+            <div id="result-area" class="hidden">
+                <h2 id="greeting-output">Welcome!</h2>
+                <p id="age-status-output"></p>
+
+                <!-- Banner Image (Image 2) -->
+                <div class="banner-container">
+                    <img src="https://i.pinimg.com/736x/8c/5c/73/8c5c73182551170781d843512a6b5135.jpg" alt="Candy Castle Welcome" class="candy-banner">
+                </div>
+
+                <!-- Welcoming Message -->
+                <div class="welcome-message-box">
+                    <p>Welcome to Candy Saga, where playing is like tasting different flavors of sweets in every level. Play different fun and get your surprise as you moved to every level category 🍬</p>
+                </div>
+
+                <!-- Action Buttons: Open Letter & Back Button -->
+                <div class="button-group">
+                    <button id="open-letter-btn" class="candy-btn">Open your letter</button>
+                    <button id="back-btn" class="candy-btn back-btn-style">Back</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Activity Indicator / Loading Modal -->
+        <div id="loading-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="spinner">🍭</div>
+                <p>Loading sweet flavors...</p> <!-- TODO: Add a loading animation -->
+            </div>
+        </div>
+
+        <!-- The Letter Modal -->
+        <div id="letter-modal" class="modal hidden">
+            <div class="modal-content letter-box">
+                <h3>💌 Greetings!</h3>
+                <p id="personal-sweet-message"></p>
+                <button id="close-letter-btn" class="candy-btn">Play Now</button>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

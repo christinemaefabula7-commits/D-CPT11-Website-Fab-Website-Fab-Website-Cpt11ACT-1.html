@@ -1,0 +1,210 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #ffe6f2; 
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #4a2c2a;
+}
+
+.logo-header {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px 25px;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+}
+
+.logo-container h1 {
+    font-size: 1.8rem;
+    color: #d63384;
+    text-shadow: 1px 1px 2px #ffc0cb;
+}
+
+.logo-candy {
+    font-size: 1.5rem;
+    animation: bounce 1.5s infinite alternate;
+}
+
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-5px); }
+}
+
+.main-container {
+    width: 100%;
+    max-width: 650px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.candy-card {
+    background: url('image_45eb29.jpg') no-repeat center center;
+    background-size: cover;
+    border: 5px solid white;
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: relative;
+}
+
+#input-area h2, 
+#input-area p,
+#result-area h2,
+#result-area p {
+    color: #5b0e31;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 6px 12px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+#input-area h2 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 8px;
+    border-radius: 8px;
+    display: block;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #c71585;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ffb6c1;
+    border-radius: 10px;
+    outline: none;
+    font-size: 1rem;
+}
+
+/* Button Styles */
+.candy-btn {
+    background: linear-gradient(135deg, #ff69b4, #da70d6);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.2s, background 0.3s;
+    margin-top: 15px;
+}
+
+.candy-btn:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #ff1493, #ba55d3);
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.back-btn-style {
+    background: linear-gradient(135deg, #ba55d3, #9370db); /* Light purple variation */
+}
+
+.back-btn-style:hover {
+    background: linear-gradient(135deg, #9932cc, #8a2be2);
+}
+
+.banner-container {
+    margin: 15px 0;
+    border: 3px solid white;
+    border-radius: 15px;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.candy-banner {
+    width: 100%;
+    max-height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+.welcome-message-box {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border: 2px dashed #ff69b4;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Modals */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: rgb(255, 255, 255);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    border: 5px solid #ff69b4;
+    max-width: 400px;
+    width: 90%;
+}
+
+.spinner {
+    font-size: 3rem;
+    animation: spin 1s linear infinite;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
