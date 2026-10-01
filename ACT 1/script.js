@@ -270,7 +270,7 @@ registrationForm.addEventListener(
 
 
         message.textContent =
-            "Registration successful!";
+            "Congratulations, Future PurMum/PurDad! 🎉";
 
         message.className =
             "success";
@@ -363,7 +363,44 @@ petCards.forEach(function(card) {
                 petName +
                 "!";
 
+
         }
     );
+
+    /* =========================
+   ADOPT BUTTON
+========================= */
+
+const adoptButtons =
+    document.querySelectorAll(".adopt-btn");
+
+const adoptMessage =
+    document.getElementById("adoptMessage");
+
+
+adoptButtons.forEach(function(button) {
+
+    button.addEventListener("click", function(event) {
+
+        // Prevent the pet card from being selected
+        event.stopPropagation();
+
+              // Get the pet card where the button was clicked
+        const petCard = button.closest(".pet-card");
+
+        // Get the pet name
+        const petName = petCard.dataset.pet;
+
+        // Display the pet name
+        adoptMessage.querySelector("h2").textContent =
+            "You adopted " + petName + "! 🐾";
+
+        // Show adoption message
+        adoptMessage.style.display = "block";
+
+
+    });
+
+});
 
 });

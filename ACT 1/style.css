@@ -5,14 +5,20 @@
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
 body {
-    background-color: #ffe6f2; 
-    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    color: #111;
+
     display: flex;
     flex-direction: column;
+
+    justify-content: flex-start;
     align-items: center;
-    color: #4a2c2a;
+
+    min-height: 100vh;
+
+    padding: 30px 0 80px;
 }
 
 .logo-header {
@@ -229,24 +235,7 @@ body {
 }
 
 
-/* ACTIVITY 2*/
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    color: #111;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    min-height: 100vh;
-}
+/* ACTIVITY 2 */
 
 
 /* =========================
@@ -256,7 +245,7 @@ body {
 .container {
     background-color: white;
 
-    width: 400px;
+    width: 540px;
     padding: 35px;
 
     border: 2px solid #111;
@@ -342,7 +331,7 @@ button:hover {
 
 
 /* =========================
-   LOADING INDICATOR
+   ACTIVITY 2 LOADING
 ========================= */
 
 .loading-box {
@@ -361,7 +350,14 @@ button:hover {
     text-align: center;
 }
 
-.spinner {
+
+/*
+   IMPORTANT:
+   This has its own class so it will NOT
+   affect Activity 1's loading indicator.
+*/
+
+.activity2-spinner {
     width: 40px;
     height: 40px;
 
@@ -372,10 +368,11 @@ button:hover {
 
     margin: 0 auto 20px;
 
-    animation: spin 1s linear infinite;
+    animation: activity2-spin 1s linear infinite;
 }
 
-@keyframes spin {
+
+@keyframes activity2-spin {
 
     from {
         transform: rotate(0deg);
@@ -384,6 +381,7 @@ button:hover {
     to {
         transform: rotate(360deg);
     }
+
 }
 
 
@@ -405,13 +403,23 @@ button:hover {
 ========================= */
 
 .pet-list {
-    max-height: 300px;
+    max-height: 330px;
 
     overflow-y: auto;
 
     margin-top: 20px;
 
-    padding-right: 5px;
+    /*
+       Extra space at the bottom so the
+       last pet can scroll comfortably.
+    */
+    padding: 5px 10px 35px 5px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
 }
 
 
@@ -426,9 +434,11 @@ button:hover {
 
     gap: 15px;
 
-    padding: 12px;
+    padding: 14px;
 
-    margin-bottom: 12px;
+    min-height: 90px;
+
+    flex-shrink: 0;
 
     border: 1px solid #e2ecff;
 
@@ -465,6 +475,8 @@ button:hover {
     width: 70px;
     height: 70px;
 
+    min-width: 70px;
+
     border-radius: 50%;
 
     object-fit: cover;
@@ -479,10 +491,14 @@ button:hover {
 
 .pet-info {
     flex: 1;
+
+    min-width: 0;
 }
 
 .pet-info h3 {
-    margin-bottom: 4px;
+    margin-bottom: 5px;
+
+    font-size: 18px;
 }
 
 .pet-info p {
@@ -490,7 +506,9 @@ button:hover {
 
     font-size: 14px;
 
-    margin-bottom: 5px;
+    margin-bottom: 7px;
+
+    line-height: 1.2;
 }
 
 .pet-info span {
@@ -498,7 +516,7 @@ button:hover {
 
     font-size: 12px;
 
-    padding: 3px 8px;
+    padding: 4px 9px;
 
     border: 1px solid #111;
 
@@ -516,4 +534,59 @@ button:hover {
     margin-top: 15px;
 
     font-weight: bold;
+}
+
+/* =========================
+   ADOPT BUTTON
+========================= */
+
+.adopt-btn {
+    width: auto;
+
+    padding: 8px 12px;
+
+    background-color: #111;
+    color: white;
+
+    border: none;
+    border-radius: 5px;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    flex-shrink: 0;
+}
+
+.adopt-btn:hover {
+    background-color: #333;
+}
+
+
+/* =========================
+   ADOPTION MESSAGE
+========================= */
+
+.adopt-message {
+    display: none;
+
+    margin-top: 20px;
+    padding: 18px;
+
+    border: 2px solid #111;
+    border-radius: 8px;
+
+    text-align: center;
+
+    background-color: #f5f5f5;
+}
+
+.adopt-message h2 {
+    margin-bottom: 8px;
+}
+
+.adopt-message p {
+    color: #444;
+    line-height: 1.5;
 }
