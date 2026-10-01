@@ -1,3 +1,4 @@
+<!-- ACTIVITY 1 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h2>ACTIVITY 1: JavaScript Fundamentals Challenge</h2>
 
     <!-- Logo at the Top -->
     <header class="logo-header">
@@ -86,6 +88,221 @@
 
     </main>
 
+<!-- ACTIVITY 1 -->
+
+    <h2>ACTIVITY 2: Interactive Form with Event Handling</h2>
+
+    <!-- Registration Section -->
+    <div class="container" id="registrationContainer">
+
+        <h1>I Wanna Be A Purparent</h1>
+        <p class="subtitle">Create your account</p>
+
+        <form id="registrationForm">
+
+            <!-- Full Name -->
+            <label for="fullName">Full Name</label>
+            <input 
+                type="text" 
+                id="fullName" 
+                placeholder="Enter your full name"
+            >
+
+            <!-- Email -->
+            <label for="email">Email Address</label>
+            <input 
+                type="email" 
+                id="email" 
+                placeholder="Enter your email address"
+            >
+
+            <!-- Password -->
+            <label for="password">Password</label>
+            <input 
+                type="password" 
+                id="password" 
+                placeholder="Enter password"
+            >
+
+            <button type="submit" id="registerButton">
+                Register
+            </button>
+
+            <!-- Message -->
+            <p id="message"></p>
+
+        </form>
+
+    </div>
+
+
+    <!-- Loading Indicator -->
+    <div class="loading-box" id="loadingBox">
+
+        <div class="spinner"></div>
+
+        <p>Preparing your purbaby list...</p>
+
+    </div>
+
+
+    <!-- Adoption Section -->
+    <div class="container adoption-container" id="adoptionContainer">
+
+        <h1>Choose your purbaby</h1>
+
+        <p class="subtitle">
+            Find a furry baby to welcome home.
+        </p>
+
+
+        <!-- Scrollable Pet List -->
+        <div class="pet-list">
+
+            <!-- Dog 1 -->
+            <div class="pet-card" data-pet="Milo">
+
+                <img 
+                    src="https://i.pinimg.com/1200x/52/fc/83/52fc83ce8bcbbf0feffc78fb99024d9d.jpg" 
+                    alt="Milo the dog"
+                >
+
+                <div class="pet-info">
+                    <h3>Milo</h3>
+                    <p>3 months old</p>
+                    <span>Dog</span>
+                </div>
+
+            </div>
+
+
+            <!-- Cat 1 -->
+            <div class="pet-card" data-pet="Buddy">
+
+                <img 
+                    src="https://i.pinimg.com/736x/dc/b9/22/dcb9225fd4d33700d75fa01a8b44d10d.jpg" 
+                    alt="Gusmeng the cat"
+                >
+
+                <div class="pet-info">
+                    <h3>Gusmeng</h3>
+                    <p>3 years old</p>
+                    <span>Cat</span>
+                </div>
+
+            </div>
+
+
+            <!-- Dog 2 -->
+            <div class="pet-card" data-pet="Luna">
+
+                <img 
+                    src="https://i.pinimg.com/736x/29/f7/00/29f7007bdf91df2385e0394b60ed0568.jpg" 
+                    alt="Dubbie the dog"
+                >
+
+                <div class="pet-info">
+                    <h3>Dubbie</h3>
+                    <p>6 months old</p>
+                    <span>Dog</span>
+                </div>
+
+            </div>
+
+
+            <!-- Dog 3 -->
+            <div class="pet-card" data-pet="Max">
+
+                <img 
+                    src="https://i.pinimg.com/736x/3c/08/d4/3c08d4acac4b53ebb23f84216b746b8b.jpg" 
+                    alt="Max the dog"
+                >
+
+                <div class="pet-info">
+                    <h3>Max</h3>
+                    <p>3 years old</p>
+                    <span>Dog</span>
+                </div>
+
+            </div>
+
+
+            <!-- Cat 2 -->
+            <div class="pet-card" data-pet="Coco">
+
+                <img 
+                    src="https://i.pinimg.com/736x/3b/d9/f7/3bd9f786ed993bbc93507e8dfcbc7386.jpg" 
+                    alt="Coco the cat"
+                >
+
+                <div class="pet-info">
+                    <h3>Coco</h3>
+                    <p>2 years old</p>
+                    <span>Cat</span>
+                </div>
+
+            </div>
+
+
+            <!--Love Birds 1-->
+            <div class="pet-card" data-pet="Charlie">
+
+                <img 
+                    src="https://i.pinimg.com/736x/17/83/d5/1783d5774cb521485ea660d66e2c30d2.jpg" 
+                    alt="Charlie & Powie the lovebirds"
+                >
+
+                <div class="pet-info">
+                    <h3>Charlie & Powie</h3>
+                    <p>3 years old</p>
+                    <span>Love Birds</span>
+                </div>
+
+            </div>
+
+             <!--Rabbit 1-->   
+            <div class="pet-card" data-pet="Charlie">
+
+                <img 
+                    src="https://i.pinimg.com/736x/fc/e1/7c/fce17c1db370c644be938759f80cfcf5.jpg" 
+                    alt="Fifi the rabbit"
+                >
+
+                <div class="pet-info">
+                    <h3>Fifi</h3>
+                    <p>3 months old</p>
+                    <span>Rabbit</span>
+                </div>
+
+            </div>
+
+              <!--Dove1-->   
+            <div class="pet-card" data-pet="Charlie">
+
+                <img 
+                    src="https://i.pinimg.com/1200x/76/3a/21/763a2106a606d3acfdcb0fe8b4d99618.jpg" 
+                    alt="Luna the messenger"
+                >
+
+                <div class="pet-info">
+                    <h3>Luna</h3>
+                    <p>4 years old</p>
+                    <span>Dove</span>
+                </div>
+
+            </div>
+
+            
+        </div>
+
+
+        <!-- Selected Pet -->
+        <p id="selectedPet"></p>
+
+    </div>
+
+
     <script src="script.js"></script>
+
 </body>
 </html>
