@@ -22,82 +22,346 @@ if (isset($_POST["submit"])) {
     mysqli_stmt_close($stmt);
 }
 
-
+ 
 ?>
 
+
+<!-- ACTIVITY 1 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Simple Form</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f2f2f2;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-        }
-
-        .card {
-            background: white;
-            width: 300px;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px #ccc;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px 0;
-            margin: 8px 0 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #0056b3;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saga Universe - Activity 1</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+    <h2>ACTIVITY 1; JavaScript Fundamentals Challenge</h2>
 
-    <div class="card">
-        <h2>Registration Form</h2>
+    <!-- Logo at the Top -->
+    <header class="logo-header">
+        <div class="logo-container">
+            <span class="logo-candy">🍬</span>
+            <h1>Saga Universe</h1>
+            <span class="logo-candy">🍭</span>
+        </div>
+    </header>
 
-        <p><?php echo htmlspecialchars($message); ?></p>
+    <main class="main-container">
+        
+        <!-- Main Card with Background Image -->
+        <div id="app-background" class="candy-card">
+            
+            <!-- Initial Input Screen -->
+            <div id="input-area">
+    
+                <h2>Activity 1: JavaScript Fundamentals Challenge</h2>
+                <p>Let us know you!</p>
+                
+                <form id="user-form">
+                    <div class="form-group">
+                        <label for="username">Name:</label>
+                        <input type="text" id="username" placeholder="e.g. Christine" required>
+                    </div>
 
-        <form method="POST" action="">
-            <label>Full Name</label>
-            <input type="text" name="Name"
-                   placeholder="Enter your name" required>
+                    <div class="form-group">
+                        <label for="userage">Age:</label>
+                        <input type="number" id="userage" placeholder="e.g. 18" required min="1" max="120">
+                    </div>
 
-            <label>Email</label>
-            <input type="email" name="Email"
-                   placeholder="Enter your email" required>
+                    <button type="submit" class="candy-btn">Enter Saga 🍬</button>
+                </form>
+            </div>
 
+            <!-- Result Screen (Displays after submitting) -->
+            <div id="result-area" class="hidden">
+                <h2 id="greeting-output">Welcome!</h2>
+                <p id="age-status-output"></p>
 
-           
-            <button type="submit" name="submit">
-                Submit
+                <!-- Banner Image (Image 2) -->
+                <div class="banner-container">
+                    <img src="https://i.pinimg.com/736x/8c/5c/73/8c5c73182551170781d843512a6b5135.jpg" alt="Candy Castle Welcome" class="candy-banner">
+                </div>
+
+                <!-- Welcoming Message -->
+                <div class="welcome-message-box">
+                    <p>Welcome to Candy Saga, where playing is like tasting different flavors of sweets in every level. Play different fun and get your surprise as you moved to every level category 🍬</p>
+                </div>
+
+                <!-- Action Buttons: Open Letter & Back Button -->
+                <div class="button-group">
+                    <button id="open-letter-btn" class="candy-btn">Open your letter</button>
+                    <button id="back-btn" class="candy-btn back-btn-style">Back</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Activity Indicator / Loading Modal -->
+        <div id="loading-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="spinner">🍭</div>
+                <p>Loading sweet flavors...</p> <!-- TODO: Add a loading animation -->
+            </div>
+        </div>
+
+        <!-- The Letter Modal -->
+        <div id="letter-modal" class="modal hidden">
+            <div class="modal-content letter-box">
+                <h3>💌 Greetings!</h3>
+                <p id="personal-sweet-message"></p>
+                <button id="close-letter-btn" class="candy-btn">Play Now</button>
+            </div>
+        </div>
+
+    </main>
+
+<!-- ACTIVITY 1 -->
+
+    <h2>ACTIVITY 2: Interactive Form with Event Handling</h2>
+
+    <!-- Registration Section -->
+    <div class="container" id="registrationContainer">
+
+        <h1>I Wanna Be A Purparent</h1>
+        <p class="subtitle">Create your account</p>
+
+        <form id="registrationForm">
+
+            <!-- Full Name -->
+            <label for="fullName">Full Name</label>
+            <input 
+                type="text" 
+                id="fullName" 
+                placeholder="Enter your full name"
+            >
+
+            <!-- Email -->
+            <label for="email">Email Address</label>
+            <input 
+                type="email" 
+                id="email" 
+                placeholder="Enter your email address"
+            >
+
+            <!-- Password -->
+            <label for="password">Password</label>
+            <input 
+                type="password" 
+                id="password" 
+                placeholder="Enter password"
+            >
+
+            <button type="submit" id="registerButton">
+                Register
             </button>
+
+            <!-- Message -->
+            <p id="message"></p>
+
         </form>
+
     </div>
+
+
+    <!-- Loading Indicator -->
+    <div class="loading-box" id="loadingBox">
+
+        <div class="spinner"></div>
+
+        <p>Preparing your purbaby list...</p>
+
+    </div>
+
+
+    <!-- Adoption Section -->
+    <div class="container adoption-container" id="adoptionContainer">
+
+        <h1>Choose your purbaby</h1>
+
+        <p class="subtitle">
+            Find a furry baby to welcome home.
+        </p>
+
+
+        <!-- Scrollable Pet List -->
+        <div class="pet-list">
+
+            <!-- Dog 1 -->
+            <div class="pet-card" data-pet="Milo">
+
+                <img 
+                    src="https://i.pinimg.com/1200x/52/fc/83/52fc83ce8bcbbf0feffc78fb99024d9d.jpg" 
+                    alt="Milo the dog"
+                >
+
+                <div class="pet-info">
+                    <h3>Milo</h3>
+                    <p>3 months old</p>
+                    <span>Dog</span>
+                </div>
+                  <button class="adopt-btn" type="button">
+                Adopt
+                </button>  
+
+            </div>
+
+
+            <!-- Cat 1 -->
+            <div class="pet-card" data-pet="Buddy">
+
+                <img 
+                    src="https://i.pinimg.com/736x/dc/b9/22/dcb9225fd4d33700d75fa01a8b44d10d.jpg" 
+                    alt="Gusmeng the cat"
+                >
+
+                <div class="pet-info">
+                    <h3>Gusmeng</h3>
+                    <p>3 years old</p>
+                    <span>Cat</span>
+                </div>
+                  <button class="adopt-btn" type="button">
+                Adopt
+                </button>  
+
+            </div>
+
+
+            <!-- Dog 2 -->
+            <div class="pet-card" data-pet="Luna">
+
+                <img 
+                    src="https://i.pinimg.com/736x/29/f7/00/29f7007bdf91df2385e0394b60ed0568.jpg" 
+                    alt="Dubbie the dog"
+                >
+
+                <div class="pet-info">
+                    <h3>Dubbie</h3>
+                    <p>6 months old</p>
+                    <span>Dog</span>
+                </div>
+                  <button class="adopt-btn" type="button">
+                Adopt
+                </button>  
+
+            </div>
+
+
+            <!-- Dog 3 -->
+            <div class="pet-card" data-pet="Max">
+
+                <img 
+                    src="https://i.pinimg.com/736x/3c/08/d4/3c08d4acac4b53ebb23f84216b746b8b.jpg" 
+                    alt="Max the dog"
+                >
+
+                <div class="pet-info">
+                    <h3>Max</h3>
+                    <p>3 years old</p>
+                    <span>Dog</span>
+                </div>
+                  <button class="adopt-btn" type="button">
+                Adopt
+                </button>  
+
+            </div>
+
+
+            <!-- Cat 2 -->
+            <div class="pet-card" data-pet="Coco">
+
+                <img 
+                    src="https://i.pinimg.com/736x/3b/d9/f7/3bd9f786ed993bbc93507e8dfcbc7386.jpg" 
+                    alt="Coco the cat"
+                >
+
+                <div class="pet-info">
+                    <h3>Coco</h3>
+                    <p>2 years old</p>
+                    <span>Cat</span>
+                </div>
+                  <button class="adopt-btn" type="button">
+                Adopt
+                </button>  
+
+            </div>
+
+
+            <!--Love Birds 1-->
+            <div class="pet-card" data-pet="Charlie">
+
+                <img 
+                    src="https://i.pinimg.com/736x/17/83/d5/1783d5774cb521485ea660d66e2c30d2.jpg" 
+                    alt="Charlie & Powie the lovebirds"
+                >
+
+                <div class="pet-info">
+                    <h3>Charlie & Powie</h3>
+                    <p>3 years old</p>
+                    <span>Love Birds</span>
+                </div>
+                  <button class="adopt-btn" type="button">
+                Adopt
+                </button>  
+
+            </div>
+
+             <!--Rabbit 1-->   
+            <div class="pet-card" data-pet="Charlie">
+
+                <img 
+                    src="https://i.pinimg.com/736x/fc/e1/7c/fce17c1db370c644be938759f80cfcf5.jpg" 
+                    alt="Fifi the rabbit"
+                >
+
+                <div class="pet-info">
+                    <h3>Fifi</h3>
+                    <p>3 months old</p>
+                    <span>Rabbit</span>
+                </div>
+                  <button class="adopt-btn" type="button">
+                Adopt
+                </button>  
+
+            </div>
+
+              <!--Dove1-->   
+            <div class="pet-card" data-pet="Charlie">
+
+                <img 
+                    src="https://i.pinimg.com/1200x/76/3a/21/763a2106a606d3acfdcb0fe8b4d99618.jpg" 
+                    alt="Luna the messenger"
+                >
+
+                <div class="pet-info">
+                    <h3>Luna</h3>
+                    <p>4 years old</p>
+                    <span>Dove</span>
+                </div>
+                <button class="adopt-btn" type="button">
+                Adopt
+                </button>   
+
+            </div>
+
+            
+        </div>
+
+
+        <!-- Selected Pet -->
+        <p id="selectedPet"></p>
+        <div id="adoptMessage" class="adopt-message">
+    <h2>Adopted! 🐾</h2>
+    <p>
+        Visit our Home For Pet Adoption to get your baby
+        and learn about the adoption process.
+    </p>
+</div>
+
+    </div>
+
+
+    <script src="script.js"></script>
 
 </body>
 </html>
